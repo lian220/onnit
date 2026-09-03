@@ -18,8 +18,10 @@
 | `index.html` | 1차 시안. 원페이지 구성 전체(히어로 · 서비스 · 강점 · 진행 방식 · 구축 사례 · 기술 · 회사 소개 · 인사이트 · 문의) |
 | `refboard.html` | 레퍼런스 보드 1차. 개발 컨설팅 · SI 회사 5곳의 첫 화면 캡처와 분석 |
 | `gallery-picks.html` | 레퍼런스 보드 2차. Landbook · Awwwards · Recent에서 고른 4곳 + ONNIT 첫 화면 시안 |
+| `onboarding.html` | 합류 준비물 체크리스트 (macOS). 비개발자가 개발을 시작하기 전 깔아야 할 계정과 도구를 의존 순서대로 정리 |
 | `ONNIT-reference-board.pdf` | `refboard.html`의 A4 인쇄본 |
 | `ONNIT-gallery-picks.pdf` | `gallery-picks.html`의 A4 인쇄본 |
+| `ONNIT-onboarding-macos.pdf` | `onboarding.html`의 A4 인쇄본 |
 
 각 HTML은 빌드가 필요 없는 단일 파일이다. 외부 의존은 Google Fonts뿐이다.
 
@@ -82,3 +84,30 @@ Hermes Obsidian Sync, Hermes Skills.
 - 파랑을 본문 글자에까지 쓸지, 버튼과 선에만 쓸지
 - 사업자등록번호 · 주소 · 전화 (현재 `시안` 표시가 붙은 임시 값)
 - 최종 스택. 정적 HTML을 유지할지 Next.js로 옮길지
+
+## 팀 합류
+
+새로 합류하는 사람은 `onboarding.html`을 열어 위에서부터 체크하며 내려가면 된다.
+맥 기준이고 한 시간 정도 걸린다. 체크 상태는 브라우저에 저장되므로 나눠서 해도 된다.
+
+준비물 요약:
+
+| 구분 | 항목 |
+|---|---|
+| 계정 | Google · GitHub · Claude(**Pro 이상, 무료 불가**) · Slack · Notion |
+| 도구 | Xcode Command Line Tools · Homebrew · VS Code · Chrome · GitHub CLI |
+| AI | Claude Code (`brew install --cask claude-code`). **Node.js는 필요 없다** |
+
+합류시키는 쪽에서 해줘야 하는 것:
+
+```bash
+# 저장소 협업자로 초대
+gh api -X PUT repos/lian220/onnit/collaborators/<GitHub-사용자명>
+```
+
+그 밖에 Slack 워크스페이스 초대, Notion 초대, Claude 요금 주체 결정,
+`CLAUDE.md`에 코딩 규칙 기록, main 브랜치 보호 설정이 필요하다.
+
+## 브랜치 규칙
+
+`main`에 직접 푸시하지 않는다. 항상 새 브랜치에서 작업하고 PR로 보낸다.
