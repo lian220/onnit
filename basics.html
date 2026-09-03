@@ -181,7 +181,148 @@ td code,p code,li code{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.81
 
 <!-- ══════════ 02 ══════════ -->
 <section class="sec">
-  <span class="eyebrow">02 · 지도</span>
+  <span class="eyebrow">02 · 이유</span>
+  <h2>그럼 왜 남의 서버를 빌리나</h2>
+  <p>"내 컴퓨터도 서버가 될 수 있다"고 했는데, 그럼 왜 굳이 돈 내고 남의 걸 빌릴까요.
+    <b>기술적으로는 내 노트북으로도 됩니다.</b> 실제로 개발할 때는 그렇게 합니다.
+    문제는 <b>남에게 보여주는 순간부터 조건이 달라진다</b>는 것입니다.</p>
+
+  <p>내 노트북으로 사이트를 돌린다는 건, 그 노트북이 <b>24시간 켜져 있어야 한다</b>는 뜻입니다.
+    닫으면 안 되고, 끄면 안 되고, 인터넷이 끊기면 안 되고, 고장 나면 안 됩니다.
+    하나라도 어긋나면 그 순간 사이트가 사라집니다. 나 대신 살려 줄 사람도 없습니다.</p>
+
+  <figure>
+    <div class="figbox">
+      <svg viewBox="0 0 860 300" role="img"
+        aria-label="내 노트북으로 서비스하면 정전, 인터넷 끊김, 고장, 실수로 종료 중 하나만 생겨도 사이트가 죽는다. 빌린 서버는 그 네 가지를 대신 감당한다">
+        <defs>
+          <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#B3524F"/>
+          </marker>
+          <marker id="ar4b" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <line x1="430" y1="18" x2="430" y2="284" stroke="currentColor"
+          stroke-width="1" stroke-dasharray="3 5" opacity=".25"/>
+
+        <!-- ── 왼쪽: 내 노트북 ── -->
+        <text x="26" y="32" font-family="IBM Plex Mono, monospace" font-size="10.5"
+          letter-spacing="1.6" fill="#B3524F">내 노트북</text>
+
+        <text x="26" y="52" font-family="IBM Plex Mono, monospace" font-size="9.5"
+          letter-spacing=".08em" fill="#B3524F" opacity=".7">터지는 것</text>
+        <g font-family="IBM Plex Sans KR, sans-serif" font-size="11.5" fill="#B3524F">
+          <text x="26"  y="76">정전</text>
+          <text x="26"  y="112">인터넷 끊김</text>
+          <text x="26"  y="148">하드웨어 고장</text>
+          <text x="26"  y="184">실수로 종료</text>
+        </g>
+        <g stroke="#B3524F" stroke-width="1.2" marker-end="url(#ar4)">
+          <line x1="124" y1="72"  x2="236" y2="112"/>
+          <line x1="124" y1="108" x2="236" y2="122"/>
+          <line x1="124" y1="144" x2="236" y2="134"/>
+          <line x1="124" y1="180" x2="236" y2="144"/>
+        </g>
+
+        <rect x="242" y="96" width="140" height="66" rx="4"
+          fill="none" stroke="#B3524F" stroke-width="1.6"/>
+        <text x="312" y="124" font-family="IBM Plex Sans KR, sans-serif" font-size="13"
+          font-weight="600" fill="#B3524F" text-anchor="middle">내 노트북</text>
+        <text x="312" y="144" font-family="IBM Plex Mono, monospace" font-size="9.5"
+          fill="#B3524F" opacity=".75" text-anchor="middle">한 대뿐</text>
+
+        <text x="312" y="196" font-family="IBM Plex Sans KR, sans-serif" font-size="12.5"
+          font-weight="600" fill="#B3524F" text-anchor="middle">하나만 터져도 사이트가 죽는다</text>
+        <text x="312" y="220" font-family="IBM Plex Sans KR, sans-serif" font-size="11.5"
+          fill="#B3524F" opacity=".8" text-anchor="middle">되살리려면 내가 그 노트북 앞에 있어야 한다</text>
+        <rect x="152" y="240" width="320" height="30" rx="3" fill="#B3524F" opacity=".08"/>
+        <text x="312" y="260" font-family="IBM Plex Sans KR, sans-serif" font-size="11.5"
+          fill="#B3524F" text-anchor="middle">여행 1일차에 집 전원이 나가면 남은 7일은 방법이 없다</text>
+
+        <!-- ── 오른쪽: 빌린 서버 ── -->
+        <text x="466" y="32" font-family="IBM Plex Mono, monospace" font-size="10.5"
+          letter-spacing="1.6" fill="#1A5CFF">빌린 서버 · 클라우드</text>
+
+        <text x="466" y="52" font-family="IBM Plex Mono, monospace" font-size="9.5"
+          letter-spacing=".08em" fill="#1A5CFF" opacity=".8">막아주는 것</text>
+        <g font-family="IBM Plex Sans KR, sans-serif" font-size="11.5" fill="currentColor" opacity=".7">
+          <text x="466" y="76">전원 이중화</text>
+          <text x="466" y="112">회선 이중화</text>
+          <text x="466" y="148">고장 시 자동 교체</text>
+          <text x="466" y="184">백업과 보안 관리</text>
+        </g>
+        <g stroke="currentColor" stroke-width="1.2" marker-end="url(#ar4b)" opacity=".5">
+          <line x1="580" y1="72"  x2="676" y2="112"/>
+          <line x1="580" y1="108" x2="676" y2="122"/>
+          <line x1="580" y1="144" x2="676" y2="134"/>
+          <line x1="580" y1="180" x2="676" y2="144"/>
+        </g>
+
+        <rect x="682" y="96" width="150" height="66" rx="4"
+          fill="none" stroke="#1A5CFF" stroke-width="1.6"/>
+        <text x="757" y="124" font-family="IBM Plex Sans KR, sans-serif" font-size="13"
+          font-weight="600" fill="#1A5CFF" text-anchor="middle">여러 대가 나눠 맡음</text>
+        <text x="757" y="144" font-family="IBM Plex Mono, monospace" font-size="9.5"
+          fill="#1A5CFF" opacity=".75" text-anchor="middle">한 대 죽어도 계속</text>
+
+        <text x="655" y="196" font-family="IBM Plex Sans KR, sans-serif" font-size="12.5"
+          font-weight="600" fill="#1A5CFF" text-anchor="middle">터져도 알아서 넘어간다</text>
+        <text x="655" y="220" font-family="IBM Plex Sans KR, sans-serif" font-size="11.5"
+          fill="currentColor" opacity=".65" text-anchor="middle">내가 자고 있어도, 해외에 있어도 계속 돌아간다</text>
+        <rect x="496" y="240" width="320" height="30" rx="3" fill="#1A5CFF" opacity=".08"/>
+        <text x="656" y="260" font-family="IBM Plex Sans KR, sans-serif" font-size="11.5"
+          fill="#1A5CFF" text-anchor="middle">우리 청첩장은 여기 올라가 있다 · 월 0원</text>
+      </svg>
+    </div>
+    <figcaption>내 노트북은 실패 지점이 하나뿐입니다. 빌린 서버는 그 실패를 대신 떠안습니다.</figcaption>
+  </figure>
+
+  <p class="note warn"><b>여행을 떠났다고 해봅시다.</b> 칠박 팔일 일정인데 첫날 집에 정전이 났습니다.
+    노트북이 꺼지고 사이트가 내려갑니다. 남은 이레 동안 할 수 있는 게 없습니다.
+    비바람에 컴퓨터가 고장 나 복구가 안 되면 그동안 만든 것까지 통째로 날아갑니다.
+    <b>이 한 가지 이유만으로도 남의 서버를 빌릴 값어치가 있습니다.</b></p>
+
+  <h3 style="margin-top:30px;font-size:1.0625rem;font-weight:700;letter-spacing:-.02em">
+    그래서 클라우드입니다</h3>
+  <p><b>클라우드는 새로운 기술이 아니라 빌리는 방식입니다.</b>
+    거대한 데이터센터에 서버를 잔뜩 세워 두고, 필요한 만큼 잘라서 빌려주는 것입니다.
+    구글 드라이브에 파일을 올리듯이, 우리는 거기에 <b>만든 프로그램을 올립니다.</b></p>
+  <p>빌리면 저쪽이 대신 해주는 일이 이만큼입니다.
+    전원과 인터넷 회선을 끊기지 않게 유지하고, 기계가 고장 나면 다른 기계로 옮기고,
+    주소가 바뀌지 않게 붙들어 주고, 보안 문제가 생기면 고쳐 주고, 백업을 받아 둡니다.
+    이걸 우리가 다 하려면 그것만 전담하는 사람이 필요합니다.</p>
+
+  <div class="tbl tscroll"><table>
+    <thead><tr><th></th><th>내 노트북으로</th><th>빌린 서버로</th></tr></thead>
+    <tbody>
+      <tr><td><b>전원</b></td><td>꺼지면 사이트도 꺼짐</td><td>이중화. 정전에도 계속</td></tr>
+      <tr><td><b>인터넷</b></td><td>공유기 재부팅만 해도 끊김</td><td>여러 회선으로 나눠 받음</td></tr>
+      <tr><td><b>주소</b></td><td>통신사가 수시로 바꿈</td><td>고정. 도메인을 붙일 수 있음</td></tr>
+      <tr><td><b>고장</b></td><td>내가 고칠 때까지 멈춤</td><td>다른 기계로 자동 이전</td></tr>
+      <tr><td><b>사람이 몰릴 때</b></td><td>가정용 회선이 못 버팀</td><td>알아서 나눠 처리</td></tr>
+      <tr><td><b>보안</b></td><td>내 집 네트워크를 인터넷에 여는 셈</td><td>격리된 곳에서 돌아감</td></tr>
+      <tr><td><b>내가 자리를 비우면</b></td><td>손쓸 방법 없음</td><td>상관없음</td></tr>
+      <tr><td><b>비용</b></td><td>전기값 + 내 시간 + 마음고생</td><td>정적 사이트는 대개 무료</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="note no"><b>우리 청첩장은 특히 그렇습니다.</b>
+    예식은 하루뿐입니다. 그날 하객 수백 명이 동시에 링크를 엽니다.
+    바로 그 순간 사이트가 죽으면 되돌릴 방법이 없습니다. 다음 주에 고쳐 봐야 소용없습니다.
+    <b>한 번뿐인 일에는 내 노트북을 걸지 않습니다.</b></p>
+
+  <p>다행히 우리 청첩장은 <b>정적</b>이라 (뒤에서 설명합니다) 빌리는 값이 들지 않습니다.
+    GitHub Pages에 올려 두었고 월 0원입니다.
+    데이터베이스가 붙기 시작하면 그때부터 돈이 듭니다.</p>
+</section>
+
+<!-- ══════════ 03 ══════════ -->
+<section class="sec">
+  <span class="eyebrow">03 · 지도</span>
   <h2>코드가 사람에게 닿기까지</h2>
   <p>우리 청첩장이 지금 실제로 이렇게 굴러갑니다.
     네 칸으로 되어 있고, 칸마다 하는 일이 다릅니다.</p>
@@ -267,9 +408,9 @@ td code,p code,li code{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.81
     우리는 그 옮기는 일을 자동으로 돌게 해뒀습니다. <code>main</code>에 올리면 일이 분 뒤 사이트가 바뀝니다.</p>
 </section>
 
-<!-- ══════════ 03 ══════════ -->
+<!-- ══════════ 04 ══════════ -->
 <section class="sec">
-  <span class="eyebrow">03 · 함정</span>
+  <span class="eyebrow">04 · 함정</span>
   <h2>localhost 주소를 보내면 안 되는 이유</h2>
   <p>개발하다 보면 이런 주소를 자주 보게 됩니다.</p>
   <div class="cmd"><pre><span class="p">$ </span>python3 -m http.server 8080
@@ -352,9 +493,9 @@ Serving HTTP on 127.0.0.1 port 8080
     내 컴퓨터에서 띄운 서버는 나만 볼 수 있습니다.
     남에게 보여주려면 반드시 배포를 해야 합니다.</p>
 </section>
-<!-- ══════════ 04 ══════════ -->
+<!-- ══════════ 05 ══════════ -->
 <section class="sec">
-  <span class="eyebrow">04 · 두 종류</span>
+  <span class="eyebrow">05 · 두 종류</span>
   <h2>서버가 필요 없는 사이트도 있다</h2>
   <p>사이트는 크게 두 종류입니다. 이 구분을 알면
     <b>왜 어떤 건 파일만 올리면 끝나고 어떤 건 개발이 크게 붙는지</b> 이해됩니다.</p>
@@ -460,9 +601,9 @@ Serving HTTP on 127.0.0.1 port 8080
     실제로 쓰려면 그 부분만 데이터베이스로 바꾸면 됩니다.</p>
 </section>
 
-<!-- ══════════ 05 ══════════ -->
+<!-- ══════════ 06 ══════════ -->
 <section class="sec">
-  <span class="eyebrow">05 · 이름표</span>
+  <span class="eyebrow">06 · 이름표</span>
   <h2>도메인과 주소는 다른 것</h2>
   <p>서버는 원래 <code>185.199.108.153</code> 같은 <b>숫자 주소</b>를 가집니다.
     사람이 외우기 어려우니 <b>onnit.co.kr</b> 같은 이름을 사서 그 숫자에 붙입니다.
@@ -482,9 +623,9 @@ Serving HTTP on 127.0.0.1 port 8080
     빌려 쓰는 주소로 다닙니다. 지금 우리 청첩장이 그 상태입니다.</p>
 </section>
 
-<!-- ══════════ 06 ══════════ -->
+<!-- ══════════ 07 ══════════ -->
 <section class="sec">
-  <span class="eyebrow">06 · 대입</span>
+  <span class="eyebrow">07 · 대입</span>
   <h2>우리 프로젝트에 그대로 넣어 보면</h2>
   <p>같은 파일이 세 군데에 따로 있습니다. <b>이 셋이 항상 같지는 않다</b>는 게 핵심입니다.</p>
   <div class="tbl tscroll"><table>
@@ -525,9 +666,9 @@ Serving HTTP on 127.0.0.1 port 8080
 <span class="p">$ </span>curl -s https://lian220.github.io/onnit-wedding-invitation/ | grep 찾을내용</pre></div>
 </section>
 
-<!-- ══════════ 07 ══════════ -->
+<!-- ══════════ 08 ══════════ -->
 <section class="sec">
-  <span class="eyebrow">07 · 정리</span>
+  <span class="eyebrow">08 · 정리</span>
   <h2>이 표만 외워도 됩니다</h2>
   <div class="tbl tscroll"><table>
     <thead><tr><th>말</th><th>한 줄로</th></tr></thead>
