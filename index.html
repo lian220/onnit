@@ -1,0 +1,1248 @@
+<meta charset="utf-8">
+<title>ONNIT 온잇</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+<style>
+/* ============================================================
+   ONNIT — tokens
+   ============================================================ */
+:root{
+  --bg:#FFFFFF;
+  --surface:#F4F6FB;
+  --surface-2:#EDF1F9;
+  --ink:#0B1020;
+  --ink-muted:#5A6478;
+  --ink-faint:#8B94A8;
+  --line:#DFE4EE;
+  --line-strong:#C4CCDC;
+  --accent:#1A5CFF;
+  --accent-hover:#0F3FCB;
+  --accent-wash:#EAF0FF;
+  --on-ink:#FFFFFF;
+  --signal:#0E9384;
+  --signal-wash:#E6F5F3;
+  --grid-line:rgba(11,16,32,.055);
+  --focus:#1A5CFF;
+  --shadow:0 1px 2px rgba(11,16,32,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A0E17;
+    --surface:#111725;
+    --surface-2:#161E2F;
+    --ink:#EEF1F7;
+    --ink-muted:#9AA4BA;
+    --ink-faint:#6E7893;
+    --line:#1F2739;
+    --line-strong:#2C3750;
+    --accent:#6E97FF;
+    --accent-hover:#8FAFFF;
+    --accent-wash:#152040;
+    --on-ink:#08101F;
+    --signal:#3FC7B4;
+    --signal-wash:#0E2A28;
+    --grid-line:rgba(238,241,247,.05);
+    --focus:#8FAFFF;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A0E17;
+  --surface:#111725;
+  --surface-2:#161E2F;
+  --ink:#EEF1F7;
+  --ink-muted:#9AA4BA;
+  --ink-faint:#6E7893;
+  --line:#1F2739;
+  --line-strong:#2C3750;
+  --accent:#6E97FF;
+  --accent-hover:#8FAFFF;
+  --accent-wash:#152040;
+  --on-ink:#08101F;
+  --signal:#3FC7B4;
+  --signal-wash:#0E2A28;
+  --grid-line:rgba(238,241,247,.05);
+  --focus:#8FAFFF;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+/* ============================================================
+   base
+   ============================================================ */
+*{box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,p,ul,ol,figure,dl,dd{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+.mono{
+  font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-variant-numeric:tabular-nums;
+}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  font-size:.6875rem;
+  font-weight:500;
+  letter-spacing:.16em;
+  color:var(--ink-faint);
+  text-transform:uppercase;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* skip link */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--accent);color:var(--on-ink);
+  padding:10px 16px;border-radius:2px;
+}
+.skip:focus{left:12px;top:12px}
+
+/* ============================================================
+   nav
+   ============================================================ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{
+  display:flex;align-items:center;gap:32px;
+  height:64px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:1.0625rem}
+.mark{
+  width:22px;height:22px;flex:none;
+  border:1.5px solid var(--accent);border-radius:3px;
+  display:grid;place-items:center;
+}
+.mark i{
+  width:8px;height:8px;border-radius:2px;
+  background:var(--accent);
+  display:block;
+}
+.brand-ko{font-weight:400;font-size:.8125rem;color:var(--ink-faint);letter-spacing:0}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:.875rem;color:var(--ink-muted)}
+.nav-links a{padding:4px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover{color:var(--ink);border-color:var(--accent)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:var(--on-ink);
+  padding:9px 16px;border-radius:3px;
+  font-size:.8125rem;font-weight:600;
+  transition:background .15s;
+}
+.nav-cta:hover{background:var(--accent-hover)}
+@media (max-width:940px){
+  .nav-links{display:none}
+  .nav-in{gap:16px}
+}
+
+/* ============================================================
+   hero
+   ============================================================ */
+.hero{
+  position:relative;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(to right,var(--grid-line) 0 1px,transparent 1px 88px),
+    repeating-linear-gradient(to bottom,var(--grid-line) 0 1px,transparent 1px 88px);
+  -webkit-mask-image:radial-gradient(120% 90% at 78% 20%,#000 0%,transparent 72%);
+  mask-image:radial-gradient(120% 90% at 78% 20%,#000 0%,transparent 72%);
+  opacity:1;
+  transition:opacity .5s ease;
+  pointer-events:none;
+}
+.hero-in{position:relative;padding:96px 0 84px}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.hero-eyebrow .bar{width:32px;height:1px;background:var(--line-strong)}
+h1{
+  font-size:clamp(2.35rem,6.2vw,4.15rem);
+  line-height:1.14;
+  font-weight:700;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+  max-width:16ch;
+}
+.line-2{
+  color:var(--accent);
+  transition:color .45s ease,opacity .45s ease;
+}
+.hero-sub{
+  margin-top:26px;
+  max-width:52ch;
+  font-size:1.0625rem;
+  color:var(--ink-muted);
+  line-height:1.85;
+  transition:opacity .45s ease;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 22px;border-radius:3px;
+  font-size:.9375rem;font-weight:600;
+  border:1px solid transparent;
+  transition:background .15s,border-color .15s,color .15s;
+  cursor:pointer;
+}
+.btn-primary{background:var(--accent);color:var(--on-ink)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{border-color:var(--line-strong);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* the ON switch — brand motif */
+.power{
+  display:inline-flex;align-items:center;gap:11px;
+  margin-left:6px;padding:8px 14px 8px 10px;
+  background:transparent;border:1px solid var(--line);
+  border-radius:999px;cursor:pointer;
+  transition:border-color .2s;
+}
+.power:hover{border-color:var(--line-strong)}
+.power-track{
+  width:38px;height:22px;flex:none;
+  border-radius:999px;background:var(--accent);
+  position:relative;transition:background .35s ease;
+}
+.power-knob{
+  position:absolute;top:3px;left:19px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--on-ink);
+  transition:left .35s cubic-bezier(.4,1.6,.5,1);
+}
+.power-text{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.6875rem;font-weight:600;letter-spacing:.14em;
+  color:var(--accent);transition:color .35s;
+  width:2.6em;text-align:left;
+}
+
+.hero.is-off .hero-grid{opacity:.25}
+.hero.is-off .line-2{color:var(--ink-faint);opacity:.55}
+.hero.is-off .hero-sub{opacity:.4}
+.hero.is-off .power-track{background:var(--line-strong)}
+.hero.is-off .power-knob{left:3px}
+.hero.is-off .power-text{color:var(--ink-faint)}
+
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin-top:60px;
+  border-top:1px solid var(--line);
+}
+.hero-meta li{
+  flex:1 1 220px;
+  padding:20px 22px 0 0;
+  font-size:.875rem;
+  color:var(--ink-muted);
+  display:flex;gap:10px;align-items:flex-start;
+}
+.hero-meta .dot{
+  width:6px;height:6px;border-radius:1px;flex:none;
+  background:var(--accent);margin-top:.6em;
+}
+@media (max-width:700px){
+  .hero-in{padding:64px 0 56px}
+  .hero-actions{gap:10px}
+  .power{margin-left:0}
+}
+
+/* ============================================================
+   section skeleton — label spine + content
+   ============================================================ */
+.sec{border-top:1px solid var(--line)}
+.sec-in{
+  display:grid;grid-template-columns:216px 1fr;gap:56px;
+  padding:84px 0;
+}
+.spine{position:sticky;top:96px;align-self:start}
+.spine h2{
+  font-size:1.5rem;font-weight:700;letter-spacing:-.02em;
+  margin-top:12px;line-height:1.4;
+}
+.spine p{margin-top:12px;font-size:.875rem;color:var(--ink-muted);line-height:1.7}
+@media (max-width:940px){
+  .sec-in{grid-template-columns:1fr;gap:28px;padding:60px 0}
+  .spine{position:static}
+}
+
+/* ============================================================
+   services — hairline switchboard
+   ============================================================ */
+.svc{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden;
+}
+.svc-item{background:var(--bg);padding:30px 28px;transition:background .18s}
+.svc-item:hover{background:var(--surface)}
+.svc-item h3{
+  font-size:1.0625rem;font-weight:600;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:9px;
+}
+.svc-item h3 .sq{width:7px;height:7px;border-radius:1px;background:var(--accent);flex:none}
+.svc-item .en{
+  display:block;margin-top:5px;
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  letter-spacing:.1em;color:var(--ink-faint);
+}
+.svc-item p{margin-top:14px;font-size:.9375rem;color:var(--ink-muted);line-height:1.8}
+.svc-item ul{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.svc-item li{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  color:var(--ink-muted);border:1px solid var(--line);
+  padding:3px 8px;border-radius:2px;
+}
+@media (max-width:700px){.svc{grid-template-columns:1fr}}
+
+/* ============================================================
+   proof / stats
+   ============================================================ */
+.proof-note{
+  font-size:.8125rem;color:var(--ink-faint);
+  border-left:2px solid var(--line-strong);padding-left:12px;
+  margin-bottom:26px;line-height:1.7;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.stat{background:var(--bg);padding:26px 24px}
+.stat .k{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:1.875rem;font-weight:600;letter-spacing:-.03em;
+  color:var(--accent);line-height:1.2;
+}
+.stat .t{margin-top:8px;font-size:.9375rem;font-weight:600}
+.stat .d{margin-top:6px;font-size:.8125rem;color:var(--ink-muted);line-height:1.7}
+@media (max-width:760px){.stats{grid-template-columns:1fr}}
+
+.why{margin-top:34px;display:grid;gap:0}
+.why li{
+  display:grid;grid-template-columns:150px 1fr;gap:24px;
+  padding:20px 0;border-top:1px solid var(--line);
+}
+.why li:last-child{border-bottom:1px solid var(--line)}
+.why .h{font-weight:600;font-size:.9375rem}
+.why .b{font-size:.9375rem;color:var(--ink-muted);line-height:1.8}
+@media (max-width:700px){.why li{grid-template-columns:1fr;gap:6px}}
+
+/* ============================================================
+   process — real sequence, so numbers mean something
+   ============================================================ */
+.steps{counter-reset:step}
+.steps li{
+  display:grid;grid-template-columns:56px 190px 1fr;gap:24px;
+  padding:24px 0;border-top:1px solid var(--line);align-items:start;
+}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps .n{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.8125rem;font-weight:500;color:var(--accent);
+  padding-top:2px;
+}
+.steps .h{font-weight:600;font-size:1rem}
+.steps .h span{display:block;font-family:"IBM Plex Mono",monospace;font-size:.6875rem;letter-spacing:.1em;color:var(--ink-faint);font-weight:400;margin-top:3px}
+.steps .b{font-size:.9375rem;color:var(--ink-muted);line-height:1.8}
+.steps .b em{font-style:normal;color:var(--ink);font-weight:500}
+@media (max-width:760px){
+  .steps li{grid-template-columns:44px 1fr;gap:16px}
+  .steps .b{grid-column:2}
+}
+
+/* ============================================================
+   portfolio
+   ============================================================ */
+.feat{
+  border:1px solid var(--line);border-radius:3px;
+  display:grid;grid-template-columns:1.05fr .95fr;
+  overflow:hidden;background:var(--bg);
+  transition:border-color .18s;
+}
+.feat:hover{border-color:var(--line-strong)}
+.feat-body{padding:34px 32px}
+.feat-side{
+  background:var(--surface);
+  border-left:1px solid var(--line);
+  padding:34px 32px;
+  display:flex;flex-direction:column;gap:22px;
+}
+.chiprow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:16px}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  letter-spacing:.06em;padding:3px 9px;border-radius:2px;
+  border:1px solid var(--line);color:var(--ink-muted);
+}
+.chip-live{
+  color:var(--signal);border-color:transparent;background:var(--signal-wash);
+  display:inline-flex;align-items:center;gap:6px;font-weight:500;
+}
+.chip-live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal)}
+.chip-internal{color:var(--ink-faint)}
+.pj-title{font-size:1.375rem;font-weight:700;letter-spacing:-.02em;line-height:1.4}
+.pj-title .url{
+  display:block;margin-top:6px;
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;
+  color:var(--accent);font-weight:400;letter-spacing:0;
+}
+.pj-lead{margin-top:14px;font-size:.9375rem;color:var(--ink-muted);line-height:1.85}
+.pj-facts{margin-top:22px;display:grid;gap:10px}
+.pj-facts div{display:grid;grid-template-columns:88px 1fr;gap:14px;font-size:.875rem}
+.pj-facts dt{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  letter-spacing:.1em;color:var(--ink-faint);padding-top:.35em;
+}
+.pj-facts dd{color:var(--ink-muted);line-height:1.75}
+.stackline{display:flex;flex-wrap:wrap;gap:6px}
+.stackline span{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  border:1px solid var(--line);padding:3px 8px;border-radius:2px;
+  color:var(--ink-muted);background:var(--bg);
+}
+.side-h{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  letter-spacing:.14em;color:var(--ink-faint);margin-bottom:10px;
+}
+.side-list li{
+  font-size:.875rem;color:var(--ink-muted);line-height:1.8;
+  padding-left:16px;position:relative;
+}
+.side-list li::before{
+  content:"";position:absolute;left:0;top:.72em;
+  width:6px;height:1px;background:var(--line-strong);
+}
+@media (max-width:860px){
+  .feat{grid-template-columns:1fr}
+  .feat-side{border-left:0;border-top:1px solid var(--line)}
+}
+
+.pgrid{
+  margin-top:20px;
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.pcard{
+  border:1px solid var(--line);border-radius:3px;
+  padding:26px 24px;background:var(--bg);
+  display:flex;flex-direction:column;
+  transition:border-color .18s;
+}
+.pcard:hover{border-color:var(--line-strong)}
+.pcard .pj-title{font-size:1.0625rem}
+.pcard .pj-lead{font-size:.875rem;margin-top:12px}
+.pcard .stackline{margin-top:auto;padding-top:20px}
+@media (max-width:760px){.pgrid{grid-template-columns:1fr}}
+
+/* ============================================================
+   tech stack
+   ============================================================ */
+.stack li{
+  display:grid;grid-template-columns:170px 1fr;gap:24px;
+  padding:18px 0;border-top:1px solid var(--line);align-items:baseline;
+}
+.stack li:last-child{border-bottom:1px solid var(--line)}
+.stack .g{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;
+  letter-spacing:.1em;color:var(--ink);font-weight:500;
+}
+@media (max-width:700px){.stack li{grid-template-columns:1fr;gap:10px}}
+
+/* ============================================================
+   about
+   ============================================================ */
+.about p{font-size:1rem;color:var(--ink-muted);line-height:1.9;max-width:62ch}
+.about p+p{margin-top:18px}
+.about strong{color:var(--ink);font-weight:600}
+.naming{
+  margin:30px 0;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden;
+}
+.naming div{background:var(--bg);padding:22px 20px}
+.naming .w{
+  font-family:"IBM Plex Mono",monospace;font-size:1.25rem;
+  font-weight:600;color:var(--accent);letter-spacing:.02em;
+}
+.naming .m{margin-top:8px;font-size:.875rem;color:var(--ink-muted);line-height:1.75}
+@media (max-width:700px){.naming{grid-template-columns:1fr}}
+
+.info{margin-top:34px;border-top:1px solid var(--line)}
+.info div{
+  display:grid;grid-template-columns:150px 1fr;gap:20px;
+  padding:13px 0;border-bottom:1px solid var(--line);font-size:.9375rem;
+}
+.info dt{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.08em;color:var(--ink-faint);padding-top:.25em}
+.info dd{color:var(--ink-muted)}
+.ph{
+  font-family:"IBM Plex Mono",monospace;font-size:.625rem;
+  letter-spacing:.1em;color:var(--ink-faint);
+  border:1px dashed var(--line-strong);border-radius:2px;
+  padding:1px 6px;margin-right:8px;vertical-align:1px;
+}
+@media (max-width:700px){.info div{grid-template-columns:1fr;gap:2px}}
+
+/* ============================================================
+   insights
+   ============================================================ */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.post{
+  border:1px solid var(--line);border-radius:3px;
+  padding:24px 22px;background:var(--bg);
+  display:flex;flex-direction:column;gap:12px;
+}
+.post h3{font-size:1rem;font-weight:600;line-height:1.55;letter-spacing:-.01em}
+.post .meta{margin-top:auto;display:flex;align-items:center;gap:8px;padding-top:16px}
+.post .cat{font-family:"IBM Plex Mono",monospace;font-size:.6875rem;letter-spacing:.08em;color:var(--accent)}
+.post .soon{font-family:"IBM Plex Mono",monospace;font-size:.625rem;letter-spacing:.1em;color:var(--ink-faint);border:1px solid var(--line);padding:2px 7px;border-radius:2px}
+.post p{font-size:.875rem;color:var(--ink-muted);line-height:1.8}
+@media (max-width:860px){.posts{grid-template-columns:1fr}}
+
+/* ============================================================
+   contact
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.form{background:var(--bg);padding:32px 30px}
+.aside{background:var(--surface);padding:32px 30px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  letter-spacing:.1em;color:var(--ink-faint);
+}
+.field input,.field select,.field textarea{
+  background:var(--bg);
+  border:1px solid var(--line);border-radius:2px;
+  padding:10px 12px;font-size:.9375rem;
+  transition:border-color .15s;
+  width:100%;
+}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--line-strong)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);outline:none}
+.field textarea{resize:vertical;min-height:104px;line-height:1.7}
+.form-foot{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.form-hint{font-size:.8125rem;color:var(--ink-faint);flex:1 1 200px;line-height:1.6}
+.preview{
+  margin-top:20px;border-top:1px solid var(--line);padding-top:20px;
+}
+.preview .side-h{margin-bottom:10px}
+.preview textarea{
+  width:100%;min-height:150px;resize:vertical;
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;line-height:1.85;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:2px;padding:14px;color:var(--ink-muted);
+}
+.aside h3{font-size:.9375rem;font-weight:600;margin-bottom:12px}
+.aside + .aside{margin-top:0}
+.aside-block+.aside-block{margin-top:26px;padding-top:26px;border-top:1px solid var(--line)}
+.aside a{color:var(--accent);border-bottom:1px solid transparent}
+.aside a:hover{border-color:var(--accent)}
+.big-mail{
+  font-family:"IBM Plex Mono",monospace;font-size:1rem;
+  color:var(--accent);word-break:break-all;
+}
+@media (max-width:860px){
+  .contact-grid{grid-template-columns:1fr}
+  .fields{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   footer
+   ============================================================ */
+.foot{border-top:1px solid var(--line);background:var(--surface)}
+.foot-in{padding:44px 0 34px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+.foot h4{
+  font-family:"IBM Plex Mono",monospace;font-size:.6875rem;
+  letter-spacing:.14em;color:var(--ink-faint);margin-bottom:12px;font-weight:500;
+}
+.foot li,.foot p{font-size:.875rem;color:var(--ink-muted);line-height:1.9}
+.foot a:hover{color:var(--accent)}
+.foot-bar{
+  border-top:1px solid var(--line);
+  padding:18px 0 30px;
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  font-size:.8125rem;color:var(--ink-faint);
+}
+.draft{
+  border:1px dashed var(--line-strong);border-radius:3px;
+  padding:14px 16px;margin:26px 0 0;
+  font-size:.8125rem;color:var(--ink-faint);line-height:1.75;
+}
+@media (max-width:760px){.foot-in{grid-template-columns:1fr;gap:24px}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
+
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="mark"><i></i></span>
+      ONNIT <span class="brand-ko">온잇</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#services">서비스</a>
+      <a href="#proof">강점</a>
+      <a href="#process">진행 방식</a>
+      <a href="#work">구축 사례</a>
+      <a href="#stack">기술</a>
+      <a href="#about">회사 소개</a>
+    </nav>
+    <a class="nav-cta" href="#contact">프로젝트 문의</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="eyebrow">ON · IT · I'm on it</span>
+    </div>
+
+    <h1>아이디어를 켜고,<br><span class="line-2">현실로 만들다.</span></h1>
+
+    <p class="hero-sub">
+      복잡한 지식과 AI를 연결해 누구나 쉽게 쓸 수 있는 서비스로 만듭니다.
+      IT 컨설팅부터 SI 구축과 운영까지, 한 사람이 처음부터 끝까지 책임집니다.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">프로젝트 문의하기</a>
+      <a class="btn btn-ghost" href="#work">구축 사례 보기</a>
+      <button class="power" id="power" type="button" role="switch" aria-checked="true" aria-label="브랜드 전원 스위치">
+        <span class="power-track" aria-hidden="true"><span class="power-knob"></span></span>
+        <span class="power-text" id="powerText" aria-hidden="true">ON</span>
+      </button>
+    </div>
+
+    <ul class="hero-meta">
+      <li><span class="dot" aria-hidden="true"></span>7년 차 백엔드 시니어가 직접 설계합니다</li>
+      <li><span class="dot" aria-hidden="true"></span>재하청 없이 직접 만들고 직접 넘깁니다</li>
+      <li><span class="dot" aria-hidden="true"></span>첫 상담과 견적은 무료입니다</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section class="sec" id="services">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Services</span>
+      <h2>무엇을 하나요</h2>
+      <p>컨설팅만 하고 빠지거나, 만들기만 하고 떠나지 않습니다. 진단부터 운영까지 이어서 맡습니다.</p>
+    </div>
+    <div class="svc">
+      <article class="svc-item">
+        <h3><span class="sq" aria-hidden="true"></span>IT 컨설팅<span class="en">Consulting</span></h3>
+        <p>지금 쓰는 시스템이 왜 느리고 왜 자꾸 터지는지부터 짚습니다. 기술 선택의 장단점을 문서로 남겨, 결정을 나중에도 설명할 수 있게 만듭니다.</p>
+        <ul><li>현행 진단</li><li>아키텍처 설계</li><li>기술 검토</li><li>마이그레이션 계획</li></ul>
+      </article>
+      <article class="svc-item">
+        <h3><span class="sq" aria-hidden="true"></span>SI · 수탁 개발<span class="en">System Integration</span></h3>
+        <p>요구사항 정의부터 구축과 검수까지 한 흐름으로 진행합니다. 웹 서비스, 관리자 백오피스, API, 외부 시스템 연동을 다룹니다.</p>
+        <ul><li>웹 · 백오피스</li><li>API 설계</li><li>외부 연동</li><li>데이터 이관</li></ul>
+      </article>
+      <article class="svc-item">
+        <h3><span class="sq" aria-hidden="true"></span>AI 솔루션<span class="en">AI Solutions</span></h3>
+        <p>사내에 흩어진 문서와 데이터를 AI가 읽을 수 있는 형태로 정리하고, 실제 업무 흐름에 붙입니다. 데모가 아니라 매일 쓰는 도구를 만듭니다.</p>
+        <ul><li>업무 자동화</li><li>문서 검색 RAG</li><li>AI 에이전트</li><li>사내 데이터 연결</li></ul>
+      </article>
+      <article class="svc-item">
+        <h3><span class="sq" aria-hidden="true"></span>운영 · 유지보수<span class="en">Operations</span></h3>
+        <p>만든 다음이 더 깁니다. 배포를 자동화하고, 문제가 생겼을 때 어디가 문제인지 바로 보이는 상태로 만들어 넘깁니다.</p>
+        <ul><li>배포 자동화</li><li>관측성 구축</li><li>장애 대응 체계</li><li>성능 튜닝</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PROOF ══════════════════ -->
+<section class="sec" id="proof">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Track record</span>
+      <h2>무엇을 근거로<br>맡길 수 있나요</h2>
+      <p>회사는 새로 시작하지만, 사람은 새롭지 않습니다. 대표가 실무에서 만든 결과를 그대로 적습니다.</p>
+    </div>
+    <div>
+      <p class="proof-note">
+        아래 수치는 ONNIT 설립 이전, 대표가 재직 중 담당한 프로덕트에서 만든 결과입니다.
+        ONNIT 명의의 실적과는 구분해서 표기합니다.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="k">15배</div>
+          <div class="t">신규 가입 증가</div>
+          <div class="d">소셜 로그인을 다시 설계해 일 10명이던 신규 가입을 150명으로 늘렸습니다.</div>
+        </div>
+        <div class="stat">
+          <div class="k">0건</div>
+          <div class="t">결제 회귀 장애</div>
+          <div class="d">정기결제와 환불, 리워드 회수까지 백엔드 단독으로 설계해 되돌아온 장애가 없었습니다.</div>
+        </div>
+        <div class="stat">
+          <div class="k">30.2%</div>
+          <div class="t">정회원 전환율</div>
+          <div class="d">준회원 9,723명 중 2,936명이 정회원으로 넘어갔습니다.</div>
+        </div>
+      </div>
+
+      <ul class="why">
+        <li>
+          <div class="h">인증과 권한</div>
+          <div class="b">OAuth 2.1 PKCE로 소셜 로그인을 받고 자체 토큰을 발급합니다. 재사용된 토큰이 감지되면 세션 전체를 끊습니다. 권한은 3단으로 나누고 객체 단위까지 검사해, 남의 데이터가 URL만 바꿔서 열리는 일을 막습니다.</div>
+        </li>
+        <li>
+          <div class="h">결제 도메인</div>
+          <div class="b">카드 정보를 직접 보관하지 않고 빌링키만 맡아 보안 부담을 줄입니다. 배치가 두 번 돌아도 결제는 한 번만 나가게 멱등 키를 씁니다. 환불은 남은 기간만큼 안분해 정산합니다.</div>
+        </li>
+        <li>
+          <div class="h">운영 관측성</div>
+          <div class="b">로그를 뒤지는 대신 요청 하나를 끝까지 따라가 봅니다. 서버를 새로 띄우지 않고 기존 장비에 얹는 방식으로 도입해, 트래픽이 늘어도 비용이 같이 뛰지 않는 구조로 만들었습니다.</div>
+        </li>
+        <li>
+          <div class="h">일하는 방식</div>
+          <div class="b">왜 이 설계를 골랐는지를 기록으로 남깁니다. 데이터베이스 컬럼 하나에도 의미와 규칙을 주석으로 박아둡니다. 인수인계 문서가 따로 필요 없는 상태를 목표로 합니다.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PROCESS ══════════════════ -->
+<section class="sec" id="process">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Process</span>
+      <h2>어떻게 진행하나요</h2>
+      <p>순서대로 진행합니다. 각 단계가 끝날 때 확인할 산출물이 있습니다.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <div class="n">01</div>
+        <div class="h">상담<span>DISCOVERY</span></div>
+        <div class="b">무엇을 왜 만들려는지부터 듣습니다. 기술 이야기는 그다음입니다. <em>첫 상담은 무료이고, 만들지 않는 편이 낫다고 판단되면 그렇게 말씀드립니다.</em></div>
+      </li>
+      <li>
+        <div class="n">02</div>
+        <div class="h">요구사항 정의<span>SCOPING</span></div>
+        <div class="b">범위와 일정과 비용을 문서로 확정합니다. <em>여기서 합의한 범위 밖의 일은 별도로 다시 이야기합니다.</em> 나중에 말이 달라지는 일을 없애기 위해서입니다.</div>
+      </li>
+      <li>
+        <div class="n">03</div>
+        <div class="h">설계<span>DESIGN</span></div>
+        <div class="b">화면 흐름과 데이터 구조를 먼저 그립니다. 선택지가 여러 개일 때는 <em>고른 이유와 버린 이유를 같이 남깁니다.</em></div>
+      </li>
+      <li>
+        <div class="n">04</div>
+        <div class="h">구축<span>BUILD</span></div>
+        <div class="b"><em>2주 단위로 동작하는 화면을 직접 보여드립니다.</em> 다 만든 다음에 처음 보는 상황을 만들지 않습니다.</div>
+      </li>
+      <li>
+        <div class="n">05</div>
+        <div class="h">검수와 이관<span>HANDOVER</span></div>
+        <div class="b">코드와 문서, 계정과 배포 권한까지 모두 넘깁니다. <em>ONNIT 없이도 굴러가는 상태가 정상입니다.</em> 운영을 계속 맡기고 싶으시면 그때 유지보수로 이어갑니다.</div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════ WORK ══════════════════ -->
+<section class="sec" id="work">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Selected work</span>
+      <h2>구축 사례</h2>
+      <p>대표가 기획부터 배포까지 직접 만든 프로젝트입니다. 채워 넣은 사례가 아니라 실제로 돌아가는 것들입니다.</p>
+    </div>
+    <div>
+
+      <!-- featured -->
+      <article class="feat">
+        <div class="feat-body">
+          <div class="chiprow">
+            <span class="chip chip-live">서비스 중</span>
+            <span class="chip">B2C · PWA</span>
+            <span class="chip">AI</span>
+          </div>
+          <h3 class="pj-title">로뚜 Lohtu<span class="url">lohtu.app</span></h3>
+          <p class="pj-lead">
+            AI에게 던진 질문을 모아 하루 회고로 되돌려주는 모바일 웹앱입니다.
+            일기를 새로 쓰게 하지 않고, 이미 한 질문에서 그날의 관심과 반복을 읽어냅니다.
+            밤에는 하루를 가볍게 닫고, 아침에는 손쓸 수 있을 때 돌아보는 두 번의 회고로 나눴습니다.
+          </p>
+          <dl class="pj-facts">
+            <div><dt>역할</dt><dd>기획 · 설계 · 개발 · 운영 전 과정</dd></div>
+            <div><dt>핵심</dt><dd>질문은 회고 재료로 쌓고, 답변 저장은 동의를 받은 경우에만 다루는 프라이버시 설계</dd></div>
+            <div><dt>스택</dt><dd class="stackline">
+              <span>Vanilla JS PWA</span><span>Supabase Edge Functions</span><span>PostgreSQL</span><span>Cloudflare Pages</span><span>LLM API</span>
+            </dd></div>
+          </dl>
+        </div>
+        <div class="feat-side">
+          <div>
+            <div class="side-h">풀어낸 문제</div>
+            <ul class="side-list">
+              <li>기록을 요구하지 않고 회고를 만드는 방법</li>
+              <li>사용자를 단정하지 않는 문장 생성 규칙</li>
+              <li>위기 신호가 보이는 날은 회고를 멈추는 안전장치</li>
+              <li>날짜 경계와 중복 제거를 한 곳에서만 정의하기</li>
+            </ul>
+          </div>
+          <div>
+            <div class="side-h">엔지니어링</div>
+            <ul class="side-list">
+              <li>LLM 없이도 도는 결정론 테스트 게이트</li>
+              <li>모든 테이블과 컬럼에 계약을 주석으로 명시</li>
+              <li>순수 엔진과 화면 계층의 단방향 의존</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- grid -->
+      <div class="pgrid">
+
+        <article class="pcard">
+          <div class="chiprow">
+            <span class="chip chip-live">운영 중</span>
+            <span class="chip">의료 · B2B</span>
+          </div>
+          <h3 class="pj-title">한의원 초진접수 + Clinic OS</h3>
+          <p class="pj-lead">
+            환자가 태블릿에 적은 내용이 원장 차트와 환자 휴대폰까지 실제로 나가는 시스템입니다.
+            접수 도메인과 원내 업무 시스템 두 축으로 나눠, 접수 11개 · 업무 29개 테이블을 설계했습니다.
+            프로그램과 처방, 탕전, 재고, 출고, 해피콜, 정산까지 원내 흐름을 담았습니다.
+            주민등록번호는 암호화해 보관합니다.
+          </p>
+          <div class="stackline">
+            <span>Next.js 16</span><span>React 19</span><span>Supabase</span><span>Vercel</span><span>EMR 연동</span><span>알림톡</span><span>GitHub Actions</span>
+          </div>
+        </article>
+
+        <article class="pcard">
+          <div class="chiprow">
+            <span class="chip">핀테크</span>
+            <span class="chip">모노레포</span>
+          </div>
+          <h3 class="pj-title">Quant Jump Stock</h3>
+          <p class="pj-lead">
+            AI 기반 퀀트 투자 플랫폼입니다. 사용자 앱, 운영 백오피스, 코어 API, 데이터 수집 엔진
+            네 개 서비스를 하나의 저장소에서 관리합니다.
+            인프라를 코드로 정의해두고, main에 머지하면 네 서비스가 모두 자동 배포됩니다.
+          </p>
+          <div class="stackline">
+            <span>Kotlin</span><span>Spring Boot 3.2</span><span>Python FastAPI</span><span>Next.js</span><span>GCP Cloud Run</span><span>Pub/Sub</span><span>Terraform</span>
+          </div>
+        </article>
+
+        <article class="pcard">
+          <div class="chiprow">
+            <span class="chip chip-internal">사내 도구</span>
+            <span class="chip">데이터 파이프라인</span>
+          </div>
+          <h3 class="pj-title">Hermes Obsidian Sync</h3>
+          <p class="pj-lead">
+            개인 지식 베이스에서 내보내도 되는 내용만 골라 반출하는 파이프라인입니다.
+            민감한 패턴을 차단하고, 기기마다 다른 경로를 일반화하고,
+            같은 입력이면 언제 돌려도 같은 결과가 나오도록 해시 목록을 남깁니다.
+          </p>
+          <div class="stackline">
+            <span>Python</span><span>해시 매니페스트</span><span>계약 테스트</span><span>민감정보 차단 규칙</span>
+          </div>
+        </article>
+
+        <article class="pcard">
+          <div class="chiprow">
+            <span class="chip chip-internal">사내 도구</span>
+            <span class="chip">AI 인프라</span>
+          </div>
+          <h3 class="pj-title">Hermes Skills</h3>
+          <p class="pj-lead">
+            AI 에이전트가 쓰는 기능 묶음을 검증하고 빌드해 배포하는 저장소입니다.
+            실행 환경은 검증을 통과한 릴리스만 바라보고 원본 디렉토리는 절대 참조하지 않게 해,
+            수정 중인 코드가 실수로 운영에 흘러드는 경로를 없앴습니다.
+          </p>
+          <div class="stackline">
+            <span>Python</span><span>릴리스 검증</span><span>프로파일 배포</span><span>단위 테스트</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ STACK ══════════════════ -->
+<section class="sec" id="stack">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Technology</span>
+      <h2>다루는 기술</h2>
+      <p>유행을 따라가기보다, 오래 굴려본 것을 씁니다. 새 기술은 이유가 설명될 때만 씁니다.</p>
+    </div>
+    <ul class="stack">
+      <li>
+        <div class="g">BACKEND</div>
+        <div class="stackline">
+          <span>Kotlin</span><span>Java 21</span><span>Spring Boot 3</span><span>Spring Cloud Gateway</span><span>JPA</span><span>Python 3.11</span><span>FastAPI</span><span>Node.js</span>
+        </div>
+      </li>
+      <li>
+        <div class="g">FRONTEND</div>
+        <div class="stackline">
+          <span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind CSS</span><span>shadcn/ui</span><span>PWA</span>
+        </div>
+      </li>
+      <li>
+        <div class="g">DATA</div>
+        <div class="stackline">
+          <span>PostgreSQL</span><span>pgvector</span><span>MongoDB</span><span>Redis</span><span>OpenSearch</span><span>Kafka</span><span>ClickHouse</span>
+        </div>
+      </li>
+      <li>
+        <div class="g">CLOUD · INFRA</div>
+        <div class="stackline">
+          <span>AWS</span><span>GCP Cloud Run</span><span>Vercel</span><span>Cloudflare</span><span>Supabase</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>GitHub Actions</span>
+        </div>
+      </li>
+      <li>
+        <div class="g">AI</div>
+        <div class="stackline">
+          <span>Claude API</span><span>OpenAI</span><span>Ollama</span><span>Spring AI</span><span>MCP</span><span>RAG</span><span>임베딩 검색</span>
+        </div>
+      </li>
+      <li>
+        <div class="g">SECURITY · OBSERVABILITY</div>
+        <div class="stackline">
+          <span>OAuth 2.1 PKCE</span><span>RBAC</span><span>JWT Rotation</span><span>PII 마스킹</span><span>OpenTelemetry</span><span>SigNoz</span><span>분산 트레이싱</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section class="sec" id="about">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">About</span>
+      <h2>ONNIT 온잇</h2>
+      <p>이름에 하려는 일을 그대로 담았습니다.</p>
+    </div>
+    <div class="about">
+      <div class="naming">
+        <div>
+          <div class="w">ON</div>
+          <div class="m">켜다. 멈춰 있던 아이디어에 전원을 넣습니다.</div>
+        </div>
+        <div>
+          <div class="w">IT</div>
+          <div class="m">기술. 켜는 수단이자 우리가 다루는 재료입니다.</div>
+        </div>
+        <div>
+          <div class="w">I'm on it</div>
+          <div class="m">제가 하겠습니다. 맡은 일을 끝까지 가져가는 태도입니다.</div>
+        </div>
+      </div>
+
+      <p>
+        ONNIT은 <strong>종합 IT 컨설팅 및 솔루션 회사</strong>입니다.
+        진단과 설계 같은 컨설팅부터 SI 구축, 외주 개발, 운영까지 한 흐름으로 맡습니다.
+        복잡한 지식과 AI를 연결해, 누구나 쉽게 쓸 수 있는 서비스로 만드는 것이 하는 일입니다.
+      </p>
+      <p>
+        컨설팅 회사는 보고서만 남기고 떠나고, 개발 회사는 요구사항을 받아 적기만 합니다.
+        ONNIT은 그 사이를 메웁니다. <strong>왜 이렇게 만들어야 하는지 설명할 수 있는 사람이 직접 만듭니다.</strong>
+        재하청을 주지 않기 때문에, 설계한 사람과 코드를 쓴 사람과 배포한 사람이 같습니다.
+      </p>
+      <p>
+        대표는 <strong>7년 차 백엔드 엔지니어</strong>입니다.
+        인증과 권한, 결제 도메인, 운영 관측성을 실무에서 설계하고 운영해 왔습니다.
+        구현보다 <strong>왜 이 설계를 골랐는지를 드러내는 일</strong>을 중요하게 생각합니다.
+      </p>
+
+      <dl class="info">
+        <div><dt>회사명</dt><dd>ONNIT (온잇 · 오닛)</dd></div>
+        <div><dt>대표</dt><dd>임도영</dd></div>
+        <div><dt>사업 영역</dt><dd>IT 컨설팅 · SI 구축 · 수탁 개발 · AI 솔루션 · 운영 유지보수</dd></div>
+        <div><dt>설립</dt><dd><span class="ph">시안</span>2026년</dd></div>
+        <div><dt>사업자등록번호</dt><dd><span class="ph">시안</span>000-00-00000</dd></div>
+        <div><dt>주소</dt><dd><span class="ph">시안</span>서울특별시</dd></div>
+        <div><dt>이메일</dt><dd><span class="ph">시안</span>contact@onnit.co.kr</dd></div>
+        <div><dt>전화</dt><dd><span class="ph">시안</span>00-0000-0000</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INSIGHTS ══════════════════ -->
+<section class="sec" id="insights">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Insights</span>
+      <h2>기술 노트</h2>
+      <p>실무에서 부딪힌 문제와 고른 답을 정리해 올립니다. 첫 글을 준비하고 있습니다.</p>
+    </div>
+    <div class="posts">
+      <article class="post" aria-disabled="true">
+        <h3>재발급 토큰을 돌려 쓰면 어디까지 막을 수 있나</h3>
+        <p>토큰이 한 번 새면 세션 전체를 끊는 구조를 어떻게 만드는지, 그 대가로 무엇을 포기했는지 적습니다.</p>
+        <div class="meta"><span class="cat">AUTH</span><span class="soon">준비 중</span></div>
+      </article>
+      <article class="post" aria-disabled="true">
+        <h3>정기결제 배치가 두 번 돌아도 결제는 한 번만</h3>
+        <p>멱등 키를 어디에 걸어야 하는지, 외부 결제사 응답이 늦을 때 트랜잭션 경계를 어떻게 나눴는지 다룹니다.</p>
+        <div class="meta"><span class="cat">PAYMENT</span><span class="soon">준비 중</span></div>
+      </article>
+      <article class="post" aria-disabled="true">
+        <h3>서버를 새로 띄우지 않고 관측성 붙이기</h3>
+        <p>사용량에 비례해 요금이 뛰는 방식 대신, 기존 장비에 얹어 비용을 고정한 과정과 그 한계를 씁니다.</p>
+        <div class="meta"><span class="cat">OBSERVABILITY</span><span class="soon">준비 중</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section class="sec" id="contact">
+  <div class="wrap sec-in">
+    <div class="spine">
+      <span class="eyebrow">Contact</span>
+      <h2>프로젝트 문의</h2>
+      <p>아직 정리가 덜 됐어도 괜찮습니다. 무엇을 하고 싶은지만 알려주시면 나머지는 같이 정리합니다.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="form">
+        <div class="fields">
+          <div class="field">
+            <label for="f-org">회사 또는 기관명</label>
+            <input id="f-org" type="text" placeholder="예: 주식회사 온잇">
+          </div>
+          <div class="field">
+            <label for="f-name">담당자 성함</label>
+            <input id="f-name" type="text" placeholder="예: 홍길동">
+          </div>
+          <div class="field">
+            <label for="f-email">이메일</label>
+            <input id="f-email" type="email" placeholder="예: hong@company.com">
+          </div>
+          <div class="field">
+            <label for="f-phone">연락처</label>
+            <input id="f-phone" type="tel" placeholder="예: 010-0000-0000">
+          </div>
+          <div class="field">
+            <label for="f-type">문의 유형</label>
+            <select id="f-type">
+              <option>SI 구축 · 수탁 개발</option>
+              <option>IT 컨설팅</option>
+              <option>AI 솔루션</option>
+              <option>운영 · 유지보수</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-budget">예상 예산</label>
+            <select id="f-budget">
+              <option>아직 미정</option>
+              <option>1천만원 이하</option>
+              <option>1천만원 ~ 3천만원</option>
+              <option>3천만원 ~ 1억원</option>
+              <option>1억원 이상</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="f-when">희망 일정</label>
+            <input id="f-when" type="text" placeholder="예: 3월 착수, 6월 오픈 목표">
+          </div>
+          <div class="field full">
+            <label for="f-body">어떤 것을 만들고 싶으신가요</label>
+            <textarea id="f-body" placeholder="지금 무엇이 불편한지, 어떤 상태가 되면 좋을지 편하게 적어주세요."></textarea>
+          </div>
+        </div>
+
+        <div class="form-foot">
+          <button class="btn btn-primary" id="copyBtn" type="button">문의 내용 복사하기</button>
+          <a class="btn btn-ghost" id="mailBtn" href="mailto:contact@onnit.co.kr">메일로 열기</a>
+          <p class="form-hint" id="hint">복사한 뒤 아래 주소로 보내주시면 됩니다.</p>
+        </div>
+
+        <div class="preview">
+          <div class="side-h">보낼 내용 미리보기</div>
+          <textarea id="preview" readonly aria-label="작성한 문의 내용 미리보기"></textarea>
+        </div>
+      </div>
+
+      <div class="aside">
+        <div class="aside-block">
+          <h3>바로 연락하기</h3>
+          <p class="big-mail"><a href="mailto:contact@onnit.co.kr">contact@onnit.co.kr</a></p>
+          <p style="font-size:.875rem;color:var(--ink-muted);margin-top:8px">
+            <span class="ph">시안</span>연락처는 실제 값으로 교체 예정입니다.
+          </p>
+        </div>
+        <div class="aside-block">
+          <h3>이런 내용이 있으면 빠릅니다</h3>
+          <ul class="side-list">
+            <li>지금 쓰고 있는 시스템과 불편한 지점</li>
+            <li>꼭 있어야 하는 기능과 있으면 좋은 기능</li>
+            <li>오픈 목표 시점</li>
+            <li>참고하고 싶은 서비스가 있다면 그 주소</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <h3>진행하지 않는 일</h3>
+          <ul class="side-list">
+            <li>재하청으로 넘기는 개발</li>
+            <li>범위를 정하지 않은 무기한 상주</li>
+            <li>설명할 수 없는 기술을 넣는 일</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:12px">
+          <span class="mark"><i></i></span>ONNIT <span class="brand-ko">온잇</span>
+        </a>
+        <p>아이디어를 켜고, 현실로 만들다.<br>가장 명쾌하게 실행하는 AI 파트너.</p>
+      </div>
+      <div>
+        <h4>SERVICES</h4>
+        <ul>
+          <li><a href="#services">IT 컨설팅</a></li>
+          <li><a href="#services">SI · 수탁 개발</a></li>
+          <li><a href="#services">AI 솔루션</a></li>
+          <li><a href="#services">운영 · 유지보수</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="#work">구축 사례</a></li>
+          <li><a href="#stack">다루는 기술</a></li>
+          <li><a href="#about">회사 소개</a></li>
+          <li><a href="#contact">프로젝트 문의</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="draft">
+      이 페이지는 시안입니다. <span class="ph">시안</span> 표시가 붙은 항목은 임시 값이며,
+      사업자 정보와 연락처는 확정된 값으로 교체해야 합니다.
+      구축 사례와 기술 스택은 실제 프로젝트 내용입니다.
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 ONNIT. All rights reserved.</span>
+      <span class="mono">ON · IT · I'm on it</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---- brand power switch ---- */
+  var hero = document.getElementById('top');
+  var power = document.getElementById('power');
+  var powerText = document.getElementById('powerText');
+  if (power && hero) {
+    power.addEventListener('click', function(){
+      var off = hero.classList.toggle('is-off');
+      power.setAttribute('aria-checked', off ? 'false' : 'true');
+      powerText.textContent = off ? 'OFF' : 'ON';
+    });
+  }
+
+  /* ---- contact draft composer ---- */
+  var ids = ['f-org','f-name','f-email','f-phone','f-type','f-budget','f-when','f-body'];
+  var labels = ['회사/기관','담당자','이메일','연락처','문의 유형','예상 예산','희망 일정'];
+  var preview = document.getElementById('preview');
+  var hint = document.getElementById('hint');
+  var mailBtn = document.getElementById('mailBtn');
+
+  function val(id){
+    var el = document.getElementById(id);
+    return el ? String(el.value || '').trim() : '';
+  }
+
+  function compose(){
+    var lines = ['[ONNIT 프로젝트 문의]', ''];
+    for (var i = 0; i < labels.length; i++) {
+      lines.push(labels[i] + ': ' + (val(ids[i]) || '-'));
+    }
+    lines.push('', '── 문의 내용 ──', val('f-body') || '-');
+    return lines.join('\n');
+  }
+
+  function refresh(){
+    if (!preview) return;
+    var text = compose();
+    preview.value = text;
+    if (mailBtn) {
+      var subject = 'ONNIT 프로젝트 문의' + (val('f-org') ? ' - ' + val('f-org') : '');
+      mailBtn.href = 'mailto:contact@onnit.co.kr?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+    }
+  }
+
+  ids.forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) { el.addEventListener('input', refresh); el.addEventListener('change', refresh); }
+  });
+  refresh();
+
+  var copyBtn = document.getElementById('copyBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function(){
+      var text = compose();
+      function done(ok){
+        if (!hint) return;
+        hint.textContent = ok
+          ? '복사했습니다. contact@onnit.co.kr 로 붙여넣어 보내주세요.'
+          : '복사가 막혔습니다. 아래 미리보기 내용을 직접 선택해 복사해 주세요.';
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ fallback(); });
+      } else {
+        fallback();
+      }
+      function fallback(){
+        try {
+          preview.removeAttribute('readonly');
+          preview.select();
+          var ok = document.execCommand('copy');
+          preview.setAttribute('readonly','');
+          done(ok);
+        } catch (e) {
+          done(false);
+        }
+      }
+    });
+  }
+})();
+</script>
