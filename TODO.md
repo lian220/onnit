@@ -53,6 +53,13 @@
 
 ## 문서
 
+- [ ] **`onboarding.html` 모바일 깨짐** — viewport 메타가 없어 휴대폰에서 980px 화면을
+  축소해 보여주고, `.item` 그리드가 390px 화면에서 929px 로 넘친다.
+  `.phase-h>*,.item>*{min-width:0}` 한 줄이면 넘침은 잡힌다.
+  홈페이지만 고치기로 해서 이번에는 건드리지 않았다.
+- [ ] **`basics.html`·`onboarding.html` 메타** — doctype, `lang="ko"`, description,
+  OG 태그가 없다. 링크를 공유하면 미리보기가 안 뜬다. 위와 같은 이유로 미뤘다.
+
 - [ ] **`CLAUDE.md` 작성** — 코딩 규칙을 저장소에 둔다.
   그래야 합류하는 사람의 Claude가 같은 규칙으로 코드를 쓴다.
   온보딩 문서의 '대표님이 해야 할 것'에 적어 둔 항목이다.
@@ -75,9 +82,11 @@
 ## 끝난 것
 
 - [x] 홈페이지 얼굴 맞춤 — 문서 두 장과 같은 간판 헤더, 명조 강조, 색값 25곳 정렬
-- [x] 모바일 파손 수정 — viewport 누락, 가로 넘침, 앵커 가림, iOS 폼 강제 확대, 모바일 내비 부재
-- [x] 브레이크포인트 4종 → 2종 (640 · 960)
-- [x] doctype · `lang="ko"` · description · OG · canonical · 파비콘
+- [x] 홈페이지 모바일 파손 수정 — viewport 누락, 앵커 가림, iOS 폼 강제 확대, 모바일 내비 부재
+- [x] 홈페이지 브레이크포인트 4종 → 2종 (640 · 960)
+- [x] 홈페이지 doctype · `lang="ko"` · description · OG · canonical · 파비콘
+
+  위 넷 모두 `docs/index.html` 한 파일에만 적용했다.
 
 - [x] 레퍼런스 조사 1차 — 개발 컨설팅·SI 회사 다섯 곳 (`refboard.html`)
 - [x] 레퍼런스 조사 2차 — Landbook·Awwwards·Recent에서 넷 (`gallery-picks.html`)
