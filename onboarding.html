@@ -48,6 +48,18 @@ h1{font-size:clamp(1.7rem,3.6vw,2.35rem);font-weight:700;letter-spacing:-.03em;l
 h1 .s{font-family:"Nanum Myeongjo",serif;font-weight:800;color:var(--accent)}
 .lede{margin-top:15px;max-width:62ch;color:var(--muted);line-height:1.9}
 
+/* 사전 읽을거리 */
+.pre{margin-top:22px;border:1px solid var(--accent);border-radius:3px;
+  background:var(--accent-wash);padding:20px 22px;display:block}
+.pre .k{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.14em;
+  color:var(--accent);font-weight:500}
+.pre h3{margin-top:9px;font-size:1.0625rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.pre p{margin-top:9px;font-size:.9375rem;color:var(--muted);line-height:1.85}
+.pre .go{margin-top:13px;display:inline-flex;align-items:center;gap:7px;
+  font-size:.875rem;font-weight:600;color:var(--accent)}
+a.pre{text-decoration:none}
+a.pre:hover{background:#E1EAFF}
+
 /* progress */
 .prog{margin-top:24px;border:1px solid var(--line);border-radius:3px;background:var(--soft);
   padding:16px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -167,6 +179,15 @@ h1 .s{font-family:"Nanum Myeongjo",serif;font-weight:800;color:var(--accent)}
     위에서부터 하나씩 체크하며 내려오시는 게 가장 빠릅니다.
     맥 기준이고, 전부 끝내는 데 한 시간 정도 걸립니다.
     터미널을 처음 열어보셔도 괜찮습니다. 명령은 전부 복사 버튼이 있습니다.</p>
+
+  <a class="pre" href="basics.html">
+    <span class="k">먼저 읽기 · 15분</span>
+    <h3>서버라는 게 뭐냐면</h3>
+    <p>서버, 배포, 로컬, 도메인. 이 말들을 모르면 아래 단계를 따라 해도
+      무슨 일이 벌어지는지 모릅니다. 설치보다 이걸 먼저 읽으세요.
+      우리 청첩장을 예로 그림과 함께 설명합니다.</p>
+    <span class="go">읽으러 가기 →</span>
+  </a>
 
   <div class="prog">
     <span class="prog-txt"><b id="pDone">0</b> / <span id="pAll">0</span> 완료</span>
