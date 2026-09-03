@@ -9,7 +9,16 @@
 운영 유지보수까지 한 흐름으로 맡는다.
 
 - 도메인: **onnit.co.kr**
-- 상태: **시안 단계.** 배포 코드가 아니라 방향을 정하기 위한 정적 HTML이다.
+- 상태: **시안 단계.** 방향 확정 전이며 사업자 정보는 임시값이다.
+
+| | 주소 |
+|---|---|
+| 회사 소개 | **https://lian220.github.io/onnit/** |
+| 서버·배포 기초 | **https://lian220.github.io/onnit/basics.html** |
+| 합류 준비물 | **https://lian220.github.io/onnit/onboarding.html** |
+
+로그인 없이 누구나 열린다. `docs/` 안의 파일만 사이트로 나가고,
+레퍼런스 조사(`refboard.html`, `gallery-picks.html`)와 `TODO.md` 는 저장소에만 있다.
 
 ## 이 저장소에 있는 것
 
