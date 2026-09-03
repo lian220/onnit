@@ -1,70 +1,78 @@
+<!doctype html>
+<html lang="ko">
 <meta charset="utf-8">
-<title>ONNIT 온잇</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ONNIT 온잇 — IT 컨설팅 · SI 구축 · AI 솔루션</title>
+<meta name="description" content="IT 컨설팅부터 SI 구축, AI 솔루션, 운영까지 재하청 없이 한 사람이 끝까지 맡습니다. AI를 더 넣어 드리지 않고, 지금 일하는 방식을 먼저 봅니다.">
+<link rel="canonical" href="https://lian220.github.io/onnit/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ONNIT 온잇">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="ONNIT 온잇 — IT 컨설팅 · SI 구축 · AI 솔루션">
+<meta property="og:description" content="IT 컨설팅부터 SI 구축, AI 솔루션, 운영까지 재하청 없이 한 사람이 끝까지 맡습니다. AI를 더 넣어 드리지 않고, 지금 일하는 방식을 먼저 봅니다.">
+<meta property="og:url" content="https://lian220.github.io/onnit/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@800&display=swap">
 <style>
 /* ============================================================
    ONNIT — tokens
    ============================================================ */
 :root{
   --bg:#FFFFFF;
-  --surface:#F4F6FB;
-  --surface-2:#EDF1F9;
+  --surface:#F5F7FB;
   --ink:#0B1020;
-  --ink-muted:#5A6478;
-  --ink-faint:#8B94A8;
+  --ink-muted:#59637A;
+  --ink-faint:#8A93A6;
   --line:#DFE4EE;
   --line-strong:#C4CCDC;
   --accent:#1A5CFF;
   --accent-hover:#0F3FCB;
-  --accent-wash:#EAF0FF;
+  --accent-wash:#EBF1FF;
   --on-ink:#FFFFFF;
   --signal:#0E9384;
-  --signal-wash:#E6F5F3;
+  --signal-wash:#E4F4F2;
   --grid-line:rgba(11,16,32,.055);
   --focus:#1A5CFF;
-  --shadow:0 1px 2px rgba(11,16,32,.05);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0A0E17;
-    --surface:#111725;
-    --surface-2:#161E2F;
-    --ink:#EEF1F7;
-    --ink-muted:#9AA4BA;
-    --ink-faint:#6E7893;
-    --line:#1F2739;
-    --line-strong:#2C3750;
-    --accent:#6E97FF;
+    --bg:#080C14;
+    --surface:#0D131F;
+    --ink:#ECEFF6;
+    --ink-muted:#96A0B6;
+    --ink-faint:#69738C;
+    --line:#1C2434;
+    --line-strong:#2B3549;
+    --accent:#7099FF;
     --accent-hover:#8FAFFF;
-    --accent-wash:#152040;
-    --on-ink:#08101F;
+    --accent-wash:#141F3D;
+    --on-ink:#070C16;
     --signal:#3FC7B4;
     --signal-wash:#0E2A28;
     --grid-line:rgba(238,241,247,.05);
     --focus:#8FAFFF;
-    --shadow:0 1px 2px rgba(0,0,0,.4);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0A0E17;
-  --surface:#111725;
-  --surface-2:#161E2F;
-  --ink:#EEF1F7;
-  --ink-muted:#9AA4BA;
-  --ink-faint:#6E7893;
-  --line:#1F2739;
-  --line-strong:#2C3750;
-  --accent:#6E97FF;
+  --bg:#080C14;
+  --surface:#0D131F;
+  --ink:#ECEFF6;
+  --ink-muted:#96A0B6;
+  --ink-faint:#69738C;
+  --line:#1C2434;
+  --line-strong:#2B3549;
+  --accent:#7099FF;
   --accent-hover:#8FAFFF;
-  --accent-wash:#152040;
-  --on-ink:#08101F;
+  --accent-wash:#141F3D;
+  --on-ink:#070C16;
   --signal:#3FC7B4;
   --signal-wash:#0E2A28;
   --grid-line:rgba(238,241,247,.05);
   --focus:#8FAFFF;
-  --shadow:0 1px 2px rgba(0,0,0,.4);
 }
 
 /* ============================================================
@@ -81,6 +89,8 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
+/* .nav 가 sticky 64px 라 앵커 착지점이 헤더에 가린다. 여유 12px 더. */
+html{scroll-padding-top:64px}
 h1,h2,h3,h4,p,ul,ol,figure,dl,dd{margin:0}
 ul{padding:0;list-style:none}
 a{color:inherit;text-decoration:none}
@@ -100,7 +110,7 @@ button,input,select,textarea{font:inherit;color:inherit}
   color:var(--ink-faint);
   text-transform:uppercase;
 }
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
 
 /* skip link */
 .skip{
@@ -111,44 +121,55 @@ button,input,select,textarea{font:inherit;color:inherit}
 .skip:focus{left:12px;top:12px}
 
 /* ============================================================
-   nav
+   masthead + nav
+   basics.html · onboarding.html 과 같은 간판 구조.
+   워드마크는 흐르고, 그 아래 얇은 줄만 sticky 로 남는다.
    ============================================================ */
-.nav{
+.mast{padding-top:22px}
+.wm{display:block;width:100%;height:auto;overflow:visible;color:var(--accent)}
+.mast-rule{
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  font-size:.625rem;letter-spacing:.13em;color:var(--accent);
+  padding:12px 0 18px;
+}
+.navbar{
   position:sticky;top:0;z-index:50;
   background:color-mix(in srgb,var(--bg) 88%,transparent);
   backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
-.nav-in{
-  display:flex;align-items:center;gap:32px;
-  height:64px;
+.nav-in{display:flex;align-items:center;gap:26px;min-height:52px}
+.nav-links{display:flex;gap:26px;font-size:.875rem;color:var(--ink-muted)}
+.nav-links a{
+  display:flex;align-items:center;min-height:44px;
+  border-bottom:1px solid transparent;
+  transition:color .15s,border-color .15s;
 }
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:1.0625rem}
-.mark{
-  width:22px;height:22px;flex:none;
-  border:1.5px solid var(--accent);border-radius:3px;
-  display:grid;place-items:center;
-}
-.mark i{
-  width:8px;height:8px;border-radius:2px;
-  background:var(--accent);
-  display:block;
-}
-.brand-ko{font-weight:400;font-size:.8125rem;color:var(--ink-faint);letter-spacing:0}
-.nav-links{display:flex;gap:26px;margin-left:auto;font-size:.875rem;color:var(--ink-muted)}
-.nav-links a{padding:4px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
 .nav-links a:hover{color:var(--ink);border-color:var(--accent)}
 .nav-cta{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:8px;min-height:40px;
+  margin-left:auto;flex:none;
   background:var(--accent);color:var(--on-ink);
-  padding:9px 16px;border-radius:3px;
+  padding:0 16px;border-radius:3px;
   font-size:.8125rem;font-weight:600;
   transition:background .15s;
 }
 .nav-cta:hover{background:var(--accent-hover)}
-@media (max-width:940px){
-  .nav-links{display:none}
-  .nav-in{gap:16px}
+@media (max-width:960px){
+  /* 링크 7개를 숨기지 않고 가로로 스크롤시킨다. 햄버거 없음, JS 없음. */
+  .nav-in{gap:14px}
+  .nav-links{
+    flex:1 1 0;min-width:0;gap:20px;
+    overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    mask-image:linear-gradient(to right,#000 92%,transparent);
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{white-space:nowrap;scroll-snap-align:start}
+  html{scroll-padding-top:64px}
 }
 
 /* ============================================================
@@ -164,8 +185,8 @@ button,input,select,textarea{font:inherit;color:inherit}
   background-image:
     repeating-linear-gradient(to right,var(--grid-line) 0 1px,transparent 1px 88px),
     repeating-linear-gradient(to bottom,var(--grid-line) 0 1px,transparent 1px 88px);
-  -webkit-mask-image:radial-gradient(120% 90% at 78% 20%,#000 0%,transparent 72%);
-  mask-image:radial-gradient(120% 90% at 78% 20%,#000 0%,transparent 72%);
+  -webkit-mask-image:radial-gradient(125% 95% at 50% 24%,#000 0%,transparent 76%);
+  mask-image:radial-gradient(125% 95% at 50% 24%,#000 0%,transparent 76%);
   opacity:1;
   transition:opacity .5s ease;
   pointer-events:none;
@@ -182,6 +203,9 @@ h1{
   max-width:16ch;
 }
 .line-2{
+  font-family:"Nanum Myeongjo",Batang,serif;
+  font-weight:800;
+  letter-spacing:-.015em;   /* 명조 800 은 -.035em 에서 자간이 눌린다 */
   color:var(--accent);
   transition:color .45s ease,opacity .45s ease;
 }
@@ -257,7 +281,7 @@ h1{
   width:6px;height:6px;border-radius:1px;flex:none;
   background:var(--accent);margin-top:.6em;
 }
-@media (max-width:700px){
+@media (max-width:640px){
   .hero-in{padding:64px 0 56px}
   .hero-actions{gap:10px}
   .power{margin-left:0}
@@ -267,6 +291,7 @@ h1{
    section skeleton — label spine + content
    ============================================================ */
 .sec{border-top:1px solid var(--line)}
+.sec.tint{background:var(--surface)}
 .sec-in{
   display:grid;grid-template-columns:216px 1fr;gap:56px;
   padding:84px 0;
@@ -277,7 +302,7 @@ h1{
   margin-top:12px;line-height:1.4;
 }
 .spine p{margin-top:12px;font-size:.875rem;color:var(--ink-muted);line-height:1.7}
-@media (max-width:940px){
+@media (max-width:960px){
   .sec-in{grid-template-columns:1fr;gap:28px;padding:60px 0}
   .spine{position:static}
 }
@@ -309,7 +334,7 @@ h1{
   color:var(--ink-muted);border:1px solid var(--line);
   padding:3px 8px;border-radius:2px;
 }
-@media (max-width:700px){.svc{grid-template-columns:1fr}}
+@media (max-width:640px){.svc{grid-template-columns:1fr}}
 
 /* ============================================================
    관점 (AX)
@@ -333,7 +358,7 @@ h1{
   color:var(--accent)}
 .ax-def .h2{margin-top:9px;font-size:1rem;font-weight:600;letter-spacing:-.01em}
 .ax-def .b2{margin-top:9px;font-size:.9rem;color:var(--ink-muted);line-height:1.85}
-@media (max-width:700px){
+@media (max-width:640px){
   .ax-def{grid-template-columns:1fr}
   .tenets li{grid-template-columns:34px 1fr;gap:14px}
 }
@@ -355,7 +380,7 @@ h1{
 }
 .stat .t{margin-top:8px;font-size:.9375rem;font-weight:600}
 .stat .d{margin-top:6px;font-size:.8125rem;color:var(--ink-muted);line-height:1.7}
-@media (max-width:760px){.stats{grid-template-columns:1fr}}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
 
 .why{margin-top:34px;display:grid;gap:0}
 .why li{
@@ -365,7 +390,7 @@ h1{
 .why li:last-child{border-bottom:1px solid var(--line)}
 .why .h{font-weight:600;font-size:.9375rem}
 .why .b{font-size:.9375rem;color:var(--ink-muted);line-height:1.8}
-@media (max-width:700px){.why li{grid-template-columns:1fr;gap:6px}}
+@media (max-width:640px){.why li{grid-template-columns:1fr;gap:6px}}
 
 /* ============================================================
    process — real sequence, so numbers mean something
@@ -385,7 +410,7 @@ h1{
 .steps .h span{display:block;font-family:"IBM Plex Mono",monospace;font-size:.6875rem;letter-spacing:.1em;color:var(--ink-faint);font-weight:400;margin-top:3px}
 .steps .b{font-size:.9375rem;color:var(--ink-muted);line-height:1.8}
 .steps .b em{font-style:normal;color:var(--ink);font-weight:500}
-@media (max-width:760px){
+@media (max-width:640px){
   .steps li{grid-template-columns:44px 1fr;gap:16px}
   .steps .b{grid-column:2}
 }
@@ -451,7 +476,7 @@ h1{
   content:"";position:absolute;left:0;top:.72em;
   width:6px;height:1px;background:var(--line-strong);
 }
-@media (max-width:860px){
+@media (max-width:960px){
   .feat{grid-template-columns:1fr}
   .feat-side{border-left:0;border-top:1px solid var(--line)}
 }
@@ -470,7 +495,7 @@ h1{
 .pcard .pj-title{font-size:1.0625rem}
 .pcard .pj-lead{font-size:.875rem;margin-top:12px}
 .pcard .stackline{margin-top:auto;padding-top:20px}
-@media (max-width:760px){.pgrid{grid-template-columns:1fr}}
+@media (max-width:640px){.pgrid{grid-template-columns:1fr}}
 
 /* ============================================================
    tech stack
@@ -484,7 +509,7 @@ h1{
   font-family:"IBM Plex Mono",monospace;font-size:.75rem;
   letter-spacing:.1em;color:var(--ink);font-weight:500;
 }
-@media (max-width:700px){.stack li{grid-template-columns:1fr;gap:10px}}
+@media (max-width:640px){.stack li{grid-template-columns:1fr;gap:10px}}
 
 /* ============================================================
    about
@@ -502,7 +527,7 @@ h1{
   font-weight:600;color:var(--accent);letter-spacing:.02em;
 }
 .naming .m{margin-top:8px;font-size:.875rem;color:var(--ink-muted);line-height:1.75}
-@media (max-width:700px){.naming{grid-template-columns:1fr}}
+@media (max-width:640px){.naming{grid-template-columns:1fr}}
 
 .info{margin-top:34px;border-top:1px solid var(--line)}
 .info > div{
@@ -517,7 +542,7 @@ h1{
   border:1px dashed var(--line-strong);border-radius:2px;
   padding:1px 6px;margin-right:8px;vertical-align:1px;
 }
-@media (max-width:700px){.info div{grid-template-columns:1fr;gap:2px}}
+@media (max-width:640px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* ============================================================
    insights
@@ -533,7 +558,7 @@ h1{
 .post .cat{font-family:"IBM Plex Mono",monospace;font-size:.6875rem;letter-spacing:.08em;color:var(--accent)}
 .post .soon{font-family:"IBM Plex Mono",monospace;font-size:.625rem;letter-spacing:.1em;color:var(--ink-faint);border:1px solid var(--line);padding:2px 7px;border-radius:2px}
 .post p{font-size:.875rem;color:var(--ink-muted);line-height:1.8}
-@media (max-width:860px){.posts{grid-template-columns:1fr}}
+@media (max-width:960px){.posts{grid-template-columns:1fr}}
 
 /* ============================================================
    contact
@@ -551,7 +576,7 @@ h1{
 .field input,.field select,.field textarea{
   background:var(--bg);
   border:1px solid var(--line);border-radius:2px;
-  padding:10px 12px;font-size:.9375rem;
+  padding:12px 12px;font-size:16px;
   transition:border-color .15s;
   width:100%;
 }
@@ -579,7 +604,7 @@ h1{
   font-family:"IBM Plex Mono",monospace;font-size:1rem;
   color:var(--accent);word-break:break-all;
 }
-@media (max-width:860px){
+@media (max-width:960px){
   .contact-grid{grid-template-columns:1fr}
   .fields{grid-template-columns:1fr}
 }
@@ -606,7 +631,7 @@ h1{
   padding:14px 16px;margin:26px 0 0;
   font-size:.8125rem;color:var(--ink-faint);line-height:1.75;
 }
-@media (max-width:760px){.foot-in{grid-template-columns:1fr;gap:24px}}
+@media (max-width:640px){.foot-in{grid-template-columns:1fr;gap:24px}}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
@@ -615,12 +640,22 @@ h1{
 
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<header class="nav">
+<header class="mast"><div class="wrap">
+  <a href="#top" aria-label="ONNIT 홈">
+    <svg class="wm" viewBox="0 0 1000 150" role="img" aria-label="ONNIT">
+      <text x="0" y="146" textLength="1000" lengthAdjust="spacingAndGlyphs"
+        font-family="IBM Plex Sans KR, sans-serif" font-weight="700" font-size="196"
+        letter-spacing="-6" fill="currentColor">ONNIT</text>
+    </svg>
+  </a>
+  <div class="mast-rule">
+    <span>IT 컨설팅 · SI 구축 · AI 솔루션 · 운영</span>
+    <span>ON · IT · I'M ON IT</span>
+  </div>
+</div></header>
+
+<div class="navbar">
   <div class="wrap nav-in">
-    <a class="brand" href="#top">
-      <span class="mark"><i></i></span>
-      ONNIT <span class="brand-ko">온잇</span>
-    </a>
     <nav class="nav-links" aria-label="주요 메뉴">
       <a href="#services">서비스</a>
       <a href="#view">관점</a>
@@ -632,7 +667,7 @@ h1{
     </nav>
     <a class="nav-cta" href="#contact">프로젝트 문의</a>
   </div>
-</header>
+</div>
 
 <main id="main">
 
@@ -1353,3 +1388,4 @@ h1{
   }
 })();
 </script>
+</html>
