@@ -28,6 +28,7 @@
 | `refboard.html` | 레퍼런스 보드 1차. 개발 컨설팅 · SI 회사 5곳의 첫 화면 캡처와 분석 |
 | `gallery-picks.html` | 레퍼런스 보드 2차. Landbook · Awwwards · Recent에서 고른 4곳 + ONNIT 첫 화면 시안 |
 | `TODO.md` | **남은 일 전부.** 무엇이 막혀 있고 무엇이 끝났는지. 작업 시작 전에 여기부터 본다 |
+| `DEPLOY.md` | **배포와 도메인.** `onnit.co.kr` 붙이는 절차와 DNS 레코드, GitHub Pages 를 유지할지 Cloudflare Workers 로 옮길지의 판단 근거 |
 | `basics.html` | **서버라는 게 뭐냐면.** 서버·배포·로컬·도메인을 우리 청첩장을 예로 그림과 함께 설명. 비개발자는 이걸 먼저 읽는다 |
 | `onboarding.html` | 합류 준비물 체크리스트 (macOS). 비개발자가 개발을 시작하기 전 깔아야 할 계정과 도구를 의존 순서대로 정리 |
 | `ONNIT-reference-board.pdf` | `refboard.html`의 A4 인쇄본 |

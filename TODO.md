@@ -45,10 +45,18 @@
 - [ ] **포트폴리오에 청첩장 추가** — 데모와 제작 페이지를 사례로 올린다.
   분석 → 차별화 지점 도출 → 구현까지의 과정을 보여주는 게 핵심이다.
   링크: https://lian220.github.io/onnit-wedding-invitation/
-- [ ] **`onnit.co.kr` 도메인 연결** — 사이트는 이미 떠 있다.
-  도메인 산 곳에서 DNS 를 GitHub Pages 로 돌리고 저장소 설정에 도메인을 넣으면 된다.
+  **주소를 어디에 둘지 먼저 정해야 한다.** `onnit.co.kr/wedding` 은 GitHub Pages 로는
+  불가능하고(레포당 도메인 하나, 경로 라우팅 없음) Workers 로만 된다.
+  서브도메인 `wedding.onnit.co.kr` 이면 지금 구조로도 된다. [`DEPLOY.md`](DEPLOY.md) 참고.
+- [ ] **`onnit.co.kr` 도메인 연결** — 절차와 DNS 레코드를 [`DEPLOY.md`](DEPLOY.md) 에 적어 두었다.
+  Cloudflare 등록 → 네임서버 변경 → A/AAAA 레코드 → GitHub Pages 설정 순서다.
   **연결하면 같이 고칠 것**: `og:image` 와 `canonical` 이 `lian220.github.io` 절대주소로
   박혀 있다. 도메인이 바뀌면 링크 미리보기가 깨진다.
+- [ ] **GitHub Pages 를 계속 쓸지 Workers 로 옮길지** — [`DEPLOY.md`](DEPLOY.md) 참고.
+  Cloudflare Pages 는 후보에서 뺐다. Cloudflare 가 신규 프로젝트는 Workers 로 시작하라고 안내한다.
+  갈림길은 하나다 — **비개발자가 머지 전에 화면을 확인할 수 있어야 하느냐.**
+  필요하면 옮기고(브랜치별 프리뷰 배포), 아니면 지금이 충분하다.
+  덤으로 풀리는 것: 문의 폼 백엔드, `onnit.co.kr/wedding` 경로.
 - [ ] **인사이트 첫 글** — 지금은 제목 세 개만 있고 전부 `준비 중`이다.
   인증, 결제 멱등, 관측성 중 하나를 실제로 쓴다.
 - [ ] **문의 폼 백엔드** — 지금은 내용을 복사해 메일로 보내는 방식이다.
