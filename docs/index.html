@@ -26,6 +26,7 @@
    ONNIT — tokens
    ============================================================ */
 :root{
+  color-scheme:light;
   --bg:#FFFFFF;
   --surface:#F5F7FB;
   --ink:#0B1020;
@@ -41,25 +42,6 @@
   --signal-wash:#E4F4F2;
   --grid-line:rgba(11,16,32,.055);
   --focus:#1A5CFF;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#080C14;
-    --surface:#0D131F;
-    --ink:#ECEFF6;
-    --ink-muted:#96A0B6;
-    --ink-faint:#69738C;
-    --line:#1C2434;
-    --line-strong:#2B3549;
-    --accent:#7099FF;
-    --accent-hover:#8FAFFF;
-    --accent-wash:#141F3D;
-    --on-ink:#070C16;
-    --signal:#3FC7B4;
-    --signal-wash:#0E2A28;
-    --grid-line:rgba(238,241,247,.05);
-    --focus:#8FAFFF;
-  }
 }
 :root[data-theme="dark"]{
   --bg:#080C14;
@@ -125,23 +107,15 @@ button,input,select,textarea{font:inherit;color:inherit}
 .skip:focus{left:12px;top:12px}
 
 /* ============================================================
-   masthead + nav
-   basics.html · onboarding.html 과 같은 간판 구조.
-   워드마크는 흐르고, 그 아래 얇은 줄만 sticky 로 남는다.
+   nav
+   로고와 링크를 한 줄에 둔다. 헤더 전체가 sticky 로 따라온다.
    ============================================================ */
-.mast{padding-top:22px}
-.wm{display:block;width:100%;height:auto;overflow:visible;color:var(--accent)}
-.mast-rule{
-  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
-  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  font-size:.625rem;letter-spacing:.13em;color:var(--accent);
-  padding:12px 0 18px;
-}
+.brand{display:flex;align-items:center;flex:none;margin-right:8px;color:var(--accent)}
+.wm{display:block;height:26px;width:auto;overflow:visible;color:var(--accent)}
 .navbar{
   position:sticky;top:0;z-index:50;
   background:color-mix(in srgb,var(--bg) 88%,transparent);
   backdrop-filter:blur(12px);
-  border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
 .nav-in{display:flex;align-items:center;gap:26px;min-height:52px}
@@ -161,18 +135,50 @@ button,input,select,textarea{font:inherit;color:inherit}
   transition:background .15s;
 }
 .nav-cta:hover{background:var(--accent-hover)}
+
+/* 데스크톱에서는 래퍼가 없는 것처럼 동작한다 — 링크와 CTA 가 그대로 nav-in 의 flex 아이템이 된다. */
+.nav-panel{display:contents}
+.nav-toggle{
+  display:none;margin-left:auto;flex:none;
+  width:44px;height:44px;align-items:center;justify-content:center;
+  background:none;border:0;padding:0;cursor:pointer;color:var(--ink);
+}
+.nav-burger{position:relative}
+.nav-burger,.nav-burger::before,.nav-burger::after{
+  display:block;width:20px;height:2px;background:currentColor;border-radius:2px;
+  transition:transform .18s,background-color .18s;
+}
+.nav-burger::before,.nav-burger::after{content:"";position:absolute;left:0}
+.nav-burger::before{top:-6px}
+.nav-burger::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-burger{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-burger::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-burger::after{transform:translateY(-6px) rotate(-45deg)}
 @media (max-width:960px){
-  /* 링크 7개를 숨기지 않고 가로로 스크롤시킨다. 햄버거 없음, JS 없음. */
-  .nav-in{gap:14px}
-  .nav-links{
-    flex:1 1 0;min-width:0;gap:20px;
-    overflow-x:auto;overscroll-behavior-x:contain;
-    scroll-snap-type:x proximity;
-    -webkit-overflow-scrolling:touch;scrollbar-width:none;
-    mask-image:linear-gradient(to right,#000 92%,transparent);
+  /* 링크 7개를 한 줄에 욱여넣지 않는다. 햄버거로 접고 패널로 편다. */
+  .nav-in{gap:0}
+  .wm{height:22px}
+  .brand{margin-right:0}
+  .nav-toggle{display:flex}
+  .nav-panel{
+    display:block;
+    position:absolute;top:100%;left:0;right:0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:6px 26px 20px;
+    box-shadow:0 14px 28px rgba(11,16,32,.10);
   }
-  .nav-links::-webkit-scrollbar{display:none}
-  .nav-links a{white-space:nowrap;scroll-snap-align:start}
+  .nav-panel:not(.is-open){display:none}
+  .nav-links{flex-direction:column;gap:0;font-size:1rem;color:var(--ink)}
+  .nav-links a{
+    min-height:52px;border-bottom:1px solid var(--line);
+    border-left:2px solid transparent;padding-left:2px;
+  }
+  .nav-links a:hover{border-color:var(--line);border-left-color:var(--accent)}
+  .nav-cta{
+    margin-left:0;margin-top:18px;
+    width:100%;justify-content:center;min-height:50px;font-size:.9375rem;
+  }
   html{scroll-padding-top:64px}
 }
 
@@ -644,26 +650,24 @@ h1{
 
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<header class="mast"><div class="wrap">
-  <a href="#top" aria-label="ONNIT 홈">
-    <!-- 로고. 글자는 IBM Plex Sans KR 600 을 도형으로 굳힌 것이라 폰트 로딩과 무관하다.
-         원본 파일은 docs/logo.svg. 고칠 일이 있으면 양쪽을 같이 고친다. -->
-    <svg class="wm" viewBox="0 30 374 97" role="img" aria-label="ONNIT">
-      <g fill="none" stroke="currentColor" stroke-width="17" stroke-linecap="round">
-        <path d="M22.09 49.19 A 39.5 39.5 0 1 0 73.91 49.19"/>
-        <path d="M48 38.5 V 72.5"/>
-      </g>
-      <path fill="currentColor" d="M129.84 77.04 121.20 59.64H120.84V120.00H105.84V36.24H123.24L148.44 79.20L157.08 96.60H157.44V36.24H172.44V120.00H155.04ZM212.12 77.04 203.48 59.64H203.12V120.00H188.12V36.24H205.52L230.72 79.20L239.36 96.60H239.72V36.24H254.72V120.00H237.32ZM266.92 120.00V107.28H277.96V48.96H266.92V36.24H304.96V48.96H293.80V107.28H304.96V120.00ZM350.04 50.28V120.00H334.20V50.28H310.44V36.24H373.80V50.28Z"/>
-    </svg>
-  </a>
-  <div class="mast-rule">
-    <span>IT 컨설팅 · SI 구축 · AI 솔루션 · 운영</span>
-    <span>ON · IT · I'M ON IT</span>
-  </div>
-</div></header>
-
-<div class="navbar">
+<header class="navbar">
   <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="ONNIT 홈">
+      <!-- 로고. 글자는 IBM Plex Sans KR 600 을 도형으로 굳힌 것이라 폰트 로딩과 무관하다.
+           원본 파일은 docs/logo.svg. 고칠 일이 있으면 양쪽을 같이 고친다. -->
+      <svg class="wm" viewBox="0 30 374 97" role="img" aria-label="ONNIT">
+        <g fill="none" stroke="currentColor" stroke-width="17" stroke-linecap="round">
+          <path d="M22.09 49.19 A 39.5 39.5 0 1 0 73.91 49.19"/>
+          <path d="M48 38.5 V 72.5"/>
+        </g>
+        <path fill="currentColor" d="M129.84 77.04 121.20 59.64H120.84V120.00H105.84V36.24H123.24L148.44 79.20L157.08 96.60H157.44V36.24H172.44V120.00H155.04ZM212.12 77.04 203.48 59.64H203.12V120.00H188.12V36.24H205.52L230.72 79.20L239.36 96.60H239.72V36.24H254.72V120.00H237.32ZM266.92 120.00V107.28H277.96V48.96H266.92V36.24H304.96V48.96H293.80V107.28H304.96V120.00ZM350.04 50.28V120.00H334.20V50.28H310.44V36.24H373.80V50.28Z"/>
+      </svg>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button"
+            aria-expanded="false" aria-controls="navPanel" aria-label="메뉴 열기">
+      <span class="nav-burger" aria-hidden="true"></span>
+    </button>
+    <div class="nav-panel" id="navPanel">
     <nav class="nav-links" aria-label="주요 메뉴">
       <a href="#services">서비스</a>
       <a href="#view">관점</a>
@@ -674,8 +678,9 @@ h1{
       <a href="#about">회사 소개</a>
     </nav>
     <a class="nav-cta" href="#contact">프로젝트 문의</a>
+    </div>
   </div>
-</div>
+</header>
 
 <main id="main">
 
@@ -1316,6 +1321,36 @@ h1{
 
 <script>
 (function(){
+  /* ---- mobile nav (햄버거) ---- */
+  var navToggle = document.getElementById('navToggle');
+  var navPanel = document.getElementById('navPanel');
+  if (navToggle && navPanel) {
+    var setNav = function(open){
+      navPanel.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    };
+    navToggle.addEventListener('click', function(){
+      setNav(navToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    /* 링크를 고르면 닫는다 */
+    navPanel.addEventListener('click', function(e){
+      if (e.target.closest('a')) setNav(false);
+    });
+    /* Esc 로 닫고 버튼으로 포커스를 되돌린다 */
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+        setNav(false);
+        navToggle.focus();
+      }
+    });
+    /* 데스크톱 폭으로 넓어지면 열린 상태를 지운다 */
+    var wide = window.matchMedia('(min-width:961px)');
+    var onWide = function(e){ if (e.matches) setNav(false); };
+    if (wide.addEventListener) wide.addEventListener('change', onWide);
+    else if (wide.addListener) wide.addListener(onWide);
+  }
+
   /* ---- brand power switch ---- */
   var hero = document.getElementById('top');
   var power = document.getElementById('power');
