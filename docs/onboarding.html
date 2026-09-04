@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ONNIT 합류 준비물</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +17,8 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
 a:hover{border-color:var(--accent)}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;
+  overflow-wrap:anywhere}  /* 공백 없는 긴 경로가 좁은 화면을 밀어내지 않게 */
 .eyebrow{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.6875rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-faint);font-weight:500}
 .wrap{max-width:940px;margin:0 auto;padding:0 26px}
@@ -69,6 +71,9 @@ a.pre:hover{background:#E1EAFF}
 
 /* item */
 .item{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+/* grid 칼럼의 기본값 min-width:auto 가 긴 명령어에 밀려 화면 밖으로 나간다.
+   0 으로 낮춰 칼럼이 줄어들 수 있게 하고, 넘치는 코드는 .cmd pre 안에서 가로로 스크롤된다. */
+.phase-h>*,.item>*{min-width:0}
 .item:first-of-type{border-top:1px solid var(--line-strong)}
 .cb{appearance:none;-webkit-appearance:none;width:22px;height:22px;flex:none;margin:2px 0 0 auto;
   border:1.5px solid var(--line-strong);border-radius:3px;background:var(--bg);position:relative;
