@@ -13,9 +13,9 @@
 
 | | 주소 |
 |---|---|
-| 회사 소개 | **https://lian220.github.io/onnit/** |
-| 서버·배포 기초 | **https://lian220.github.io/onnit/basics.html** |
-| 합류 준비물 | **https://lian220.github.io/onnit/onboarding.html** |
+| 회사 소개 | **https://onnit.co.kr** |
+| 서버·배포 기초 | **https://onnit.co.kr/basics.html** |
+| 합류 준비물 | **https://onnit.co.kr/onboarding.html** |
 
 로그인 없이 누구나 열린다. `docs/` 안의 파일만 사이트로 나가고,
 레퍼런스 조사(`refboard.html`, `gallery-picks.html`)와 `TODO.md` 는 저장소에만 있다.

@@ -48,10 +48,9 @@
   **주소를 어디에 둘지 먼저 정해야 한다.** `onnit.co.kr/wedding` 은 GitHub Pages 로는
   불가능하고(레포당 도메인 하나, 경로 라우팅 없음) Workers 로만 된다.
   서브도메인 `wedding.onnit.co.kr` 이면 지금 구조로도 된다. [`DEPLOY.md`](DEPLOY.md) 참고.
-- [ ] **`onnit.co.kr` 도메인 연결** — 절차와 DNS 레코드를 [`DEPLOY.md`](DEPLOY.md) 에 적어 두었다.
-  Cloudflare 등록 → 네임서버 변경 → A/AAAA 레코드 → GitHub Pages 설정 순서다.
-  **연결하면 같이 고칠 것**: `og:image` 와 `canonical` 이 `lian220.github.io` 절대주소로
-  박혀 있다. 도메인이 바뀌면 링크 미리보기가 깨진다.
+- [ ] **청첩장을 `wedding.onnit.co.kr` 로 붙이기** — Cloudflare DNS 에
+  `CNAME wedding → lian220.github.io` (회색 구름) 를 넣으면 GitHub 쪽은 바로 연결된다.
+  경로(`onnit.co.kr/wedding`)로 두는 건 GitHub Pages 로 불가능하다. [`DEPLOY.md`](DEPLOY.md) 참고.
 - [ ] **GitHub Pages 를 계속 쓸지 Workers 로 옮길지** — [`DEPLOY.md`](DEPLOY.md) 참고.
   Cloudflare Pages 는 후보에서 뺐다. Cloudflare 가 신규 프로젝트는 Workers 로 시작하라고 안내한다.
   갈림길은 하나다 — **비개발자가 머지 전에 화면을 확인할 수 있어야 하느냐.**
@@ -103,6 +102,9 @@
 
 ## 끝난 것
 
+- [x] **`onnit.co.kr` 도메인 연결** — 가비아에서 네임서버를 Cloudflare 로 위임하고
+      A 4개 · AAAA 4개를 넣었다. 프록시는 껐다 — 켜면 GitHub Pages 가 인증서를 못 받는다.
+      `og:image` · `canonical` · README 주소도 새 도메인으로 갱신했다
 - [x] **로고** — O 를 전원 기호로 대체. 지름 96 · 획 17 · NNIT SemiBold 600 · 틈 82°.
       `logo.svg` · `mark.svg` · `favicon.svg` · `og.png`.
       글자는 fonttools 로 패스화해 폰트 의존을 없앴다. 파비콘은 별도 판으로 그렸다
