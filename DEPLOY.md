@@ -5,6 +5,20 @@
 
 ## 지금 상태
 
+> **2026-09-04 연결 완료.** 아래 "실행 절차" 의 1~2 단계를 끝냈다.
+>
+> | 주소 | 저장소 | 상태 |
+> |---|---|---|
+> | https://onnit.co.kr | `lian220/onnit` (main `/docs`) | HTTPS 강제 |
+> | https://wedding.onnit.co.kr | `lian220/onnit-wedding-invitation` (main `/`) | HTTPS 강제 |
+>
+> 네임서버는 `ariella` · `quinton` `.ns.cloudflare.com`.
+> DNS 레코드는 **전부 프록시를 끈(회색 구름) 상태**다. 켜면 GitHub Pages 가
+> 도메인 소유 확인을 못 해 인증서가 발급되지 않는다. 켜려면 SSL/TLS 를 `Full` 로 먼저 바꾼다.
+>
+> 3 단계(Workers 이전)는 아직 결정 전이다.
+
+
 | | |
 |---|---|
 | 회사 소개 | `lian220/onnit` → GitHub Pages, `docs/` 를 그대로 서빙 |

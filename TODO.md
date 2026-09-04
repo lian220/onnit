@@ -14,6 +14,9 @@
 - [ ] **사업자 정보 확정** — 현재 `index.html`에 `시안` 표시가 붙은 임시값이 여덟 곳 있다.
   사업자등록번호 · 주소 · 전화 · 설립일.
 - [ ] **`contact@onnit.co.kr` 실제 개설 여부** — 지금은 문구만 있고 메일함이 없다.
+  네임서버가 Cloudflare 로 왔으니 **Email Routing 을 무료로 쓸 수 있다.**
+  대시보드 → Email → Email Routing 에서 주소를 만들고 대표 지메일로 포워딩하면 되고,
+  MX·SPF 레코드는 Cloudflare 가 자동으로 넣는다. 메일함을 따로 살 필요가 없다.
 - [ ] **로고의 전원 기호를 계속 쓸지** — 마케터가 바꾸라고 판정했다. 근거 셋.
   - **선례 40곳 이상.** Gateway · Indesit · Kogan · Staples EasyTech, 워드마크형인 Com On 까지
   - **상표권이 안 생긴다.** IEC 60417-5009 표준기호라 상표법 33조 1항 6호
@@ -28,6 +31,12 @@
 - [ ] **파비콘을 마크로 둘지 `ON` 글자로 바꿀지** — 16px 에서는 도형이 무엇이든 뭉갠다.
   지금은 마크를 쓰는데, 탭에서 보이는 건 "ONNIT"이 아니라 파란 사각형 안의 범용 아이콘이라
   회수되는 브랜드 자산이 없다. `ON` 두 글자면 읽히고 이름 앞 두 글자라 자산이 쌓인다.
+- [ ] **간판 로고 크기** — 로고를 본래 비율로 화면 폭에 채우는 방식(M2)을 골랐더니
+  간판 높이가 150 → 259 로 1.7배가 됐다. 1440px 에서 292px 를 차지한다.
+  줄인다면 셋 중 하나다.
+  - A 로고를 폭의 70~80% 만 차지하게 (비율 유지, 오른쪽 여백 생김)
+  - B **최대 높이 상한을 건다 (예: 180px)** — 모바일은 그대로, 큰 화면에서만 줄어듦. 권장
+  - C M3 로 전환 (예전 높이 150 복귀, 폭의 58% 차지)
 - [ ] **최종 스택** — 정적 HTML을 유지할지 Next.js로 옮길지.
   비개발자와 같이 간다면 정적이 협업 비용 면에서 유리하다.
 - [x] ~~`onnit` 저장소 공개 여부~~ — 공개로 돌리고 GitHub Pages 로 배포했다.
@@ -44,13 +53,7 @@
 
 - [ ] **포트폴리오에 청첩장 추가** — 데모와 제작 페이지를 사례로 올린다.
   분석 → 차별화 지점 도출 → 구현까지의 과정을 보여주는 게 핵심이다.
-  링크: https://lian220.github.io/onnit-wedding-invitation/
-  **주소를 어디에 둘지 먼저 정해야 한다.** `onnit.co.kr/wedding` 은 GitHub Pages 로는
-  불가능하고(레포당 도메인 하나, 경로 라우팅 없음) Workers 로만 된다.
-  서브도메인 `wedding.onnit.co.kr` 이면 지금 구조로도 된다. [`DEPLOY.md`](DEPLOY.md) 참고.
-- [ ] **청첩장을 `wedding.onnit.co.kr` 로 붙이기** — Cloudflare DNS 에
-  `CNAME wedding → lian220.github.io` (회색 구름) 를 넣으면 GitHub 쪽은 바로 연결된다.
-  경로(`onnit.co.kr/wedding`)로 두는 건 GitHub Pages 로 불가능하다. [`DEPLOY.md`](DEPLOY.md) 참고.
+  링크: https://wedding.onnit.co.kr · 제작 페이지 https://wedding.onnit.co.kr/make.html
 - [ ] **GitHub Pages 를 계속 쓸지 Workers 로 옮길지** — [`DEPLOY.md`](DEPLOY.md) 참고.
   Cloudflare Pages 는 후보에서 뺐다. Cloudflare 가 신규 프로젝트는 Workers 로 시작하라고 안내한다.
   갈림길은 하나다 — **비개발자가 머지 전에 화면을 확인할 수 있어야 하느냐.**
@@ -102,6 +105,8 @@
 
 ## 끝난 것
 
+- [x] **청첩장 `wedding.onnit.co.kr` 연결** — CNAME 한 줄로 붙였다. 상대경로라
+      `/make.html` 과 `css/` 자원이 그대로 동작한다. HTTPS 강제까지 켰다
 - [x] **`onnit.co.kr` 도메인 연결** — 가비아에서 네임서버를 Cloudflare 로 위임하고
       A 4개 · AAAA 4개를 넣었다. 프록시는 껐다 — 켜면 GitHub Pages 가 인증서를 못 받는다.
       `og:image` · `canonical` · README 주소도 새 도메인으로 갱신했다
