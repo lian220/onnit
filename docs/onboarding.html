@@ -1,22 +1,11 @@
 <meta charset="utf-8">
 <title>ONNIT 합류 준비물</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@800&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
 <style>
-:root{
-  color-scheme:light;
-  --bg:#FFFFFF; --card:#FFFFFF; --soft:#F5F7FB; --ink:#0B1020; --muted:#59637A; --faint:#8A93A6;
-  --line:#DFE4EE; --line-2:#C4CCDC; --accent:#1A5CFF; --accent-wash:#EBF1FF;
-  --on:#FFFFFF; --ok:#0E9384; --ok-wash:#E4F4F2; --warn:#9A5B08; --warn-wash:#FCF1E1;
-  --code-bg:#0E1424; --code-ink:#DDE4F2;
-}
-:root[data-theme="dark"]{
-  --bg:#080C14; --card:#101623; --soft:#0D131F; --ink:#ECEFF6; --muted:#96A0B6; --faint:#69738C;
-  --line:#1C2434; --line-2:#2B3549; --accent:#7099FF; --accent-wash:#141F3D;
-  --on:#070C16; --ok:#3FC7B4; --ok-wash:#0E2A28; --warn:#E0A661; --warn-wash:#2A1D0C;
-  --code-bg:#060A12; --code-ink:#C9D3E6;
-}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);
   font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
@@ -29,19 +18,22 @@ button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
 .eyebrow{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.6875rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--faint);font-weight:500}
+  text-transform:uppercase;color:var(--ink-faint);font-weight:500}
 .wrap{max-width:940px;margin:0 auto;padding:0 26px}
 
 /* masthead — ONNIT wordmark fills the width */
-.mast{border-bottom:1px solid var(--line);padding-top:22px}
-.wm{display:block;width:100%;height:auto;overflow:visible}
-.mast-rule{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+/* 헤더는 index.html 과 같은 얼굴이다 — 로고 한 줄, 오른쪽에 이 문서가 무엇인지. */
+.mast{border-bottom:1px solid var(--line)}
+.mast-in{display:flex;align-items:center;flex-wrap:wrap;gap:14px;min-height:52px}
+.brand{display:flex;align-items:center;flex:none;color:var(--accent)}
+.wm{display:block;height:26px;width:auto;overflow:visible;color:var(--accent)}
+.mast-tag{margin-left:auto;
   font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.13em;
-  color:var(--accent);padding:12px 0 18px}
+  color:var(--accent)}
 .head{padding:40px 0 34px;border-bottom:1px solid var(--line)}
 h1{font-size:clamp(1.7rem,3.6vw,2.35rem);font-weight:700;letter-spacing:-.03em;line-height:1.28}
 h1 .s{font-family:"Nanum Myeongjo",serif;font-weight:800;color:var(--accent)}
-.lede{margin-top:15px;max-width:62ch;color:var(--muted);line-height:1.9}
+.lede{margin-top:15px;max-width:62ch;color:var(--ink-muted);line-height:1.9}
 
 /* 사전 읽을거리 */
 .pre{margin-top:22px;border:1px solid var(--accent);border-radius:3px;
@@ -49,22 +41,22 @@ h1 .s{font-family:"Nanum Myeongjo",serif;font-weight:800;color:var(--accent)}
 .pre .k{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.14em;
   color:var(--accent);font-weight:500}
 .pre h3{margin-top:9px;font-size:1.0625rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
-.pre p{margin-top:9px;font-size:.9375rem;color:var(--muted);line-height:1.85}
+.pre p{margin-top:9px;font-size:.9375rem;color:var(--ink-muted);line-height:1.85}
 .pre .go{margin-top:13px;display:inline-flex;align-items:center;gap:7px;
   font-size:.875rem;font-weight:600;color:var(--accent)}
 a.pre{text-decoration:none}
 a.pre:hover{background:#E1EAFF}
 
 /* progress */
-.prog{margin-top:24px;border:1px solid var(--line);border-radius:3px;background:var(--soft);
+.prog{margin-top:24px;border:1px solid var(--line);border-radius:3px;background:var(--surface);
   padding:16px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .prog-bar{flex:1 1 220px;height:6px;background:var(--line);border-radius:99px;overflow:hidden;min-width:160px}
 .prog-fill{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .3s ease}
-.prog-txt{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.75rem;color:var(--muted);white-space:nowrap}
+.prog-txt{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.75rem;color:var(--ink-muted);white-space:nowrap}
 .prog-txt b{color:var(--accent);font-weight:600}
-.prog button{background:none;border:1px solid var(--line-2);border-radius:2px;
+.prog button{background:none;border:1px solid var(--line-strong);border-radius:2px;
   font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.1em;
-  color:var(--faint);padding:5px 10px}
+  color:var(--ink-faint);padding:5px 10px}
 .prog button:hover{border-color:var(--accent);color:var(--accent)}
 
 /* phases */
@@ -73,28 +65,28 @@ a.pre:hover{background:#E1EAFF}
 .phase-n{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.8125rem;font-weight:500;
   color:var(--accent);padding-top:.35em}
 .phase-h h2{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;line-height:1.4}
-.phase-h p{margin-top:7px;font-size:.9375rem;color:var(--muted);line-height:1.8;max-width:58ch}
+.phase-h p{margin-top:7px;font-size:.9375rem;color:var(--ink-muted);line-height:1.8;max-width:58ch}
 
 /* item */
 .item{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
-.item:first-of-type{border-top:1px solid var(--line-2)}
+.item:first-of-type{border-top:1px solid var(--line-strong)}
 .cb{appearance:none;-webkit-appearance:none;width:22px;height:22px;flex:none;margin:2px 0 0 auto;
-  border:1.5px solid var(--line-2);border-radius:3px;background:var(--bg);position:relative;
+  border:1.5px solid var(--line-strong);border-radius:3px;background:var(--bg);position:relative;
   transition:background .15s,border-color .15s}
 .cb:checked{background:var(--accent);border-color:var(--accent)}
 .cb:checked::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;
-  border:solid var(--on);border-width:0 2px 2px 0;transform:rotate(42deg)}
+  border:solid var(--on-ink);border-width:0 2px 2px 0;transform:rotate(42deg)}
 .cb:hover{border-color:var(--accent)}
-.item.done .it-h{color:var(--faint);text-decoration:line-through;text-decoration-thickness:1px}
+.item.done .it-h{color:var(--ink-faint);text-decoration:line-through;text-decoration-thickness:1px}
 .it-h{font-size:1rem;font-weight:600;letter-spacing:-.01em;display:flex;gap:9px;
   align-items:baseline;flex-wrap:wrap}
 .badge{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.5625rem;letter-spacing:.12em;
   padding:2px 7px;border-radius:2px;font-weight:500;white-space:nowrap}
 .b-must{background:var(--accent-wash);color:var(--accent)}
 .b-pay{background:var(--warn-wash);color:var(--warn)}
-.b-opt{background:var(--soft);color:var(--faint);border:1px solid var(--line)}
-.b-boss{background:var(--ok-wash);color:var(--ok)}
-.it-b{margin-top:8px;font-size:.9375rem;color:var(--muted);line-height:1.85;max-width:62ch}
+.b-opt{background:var(--surface);color:var(--ink-faint);border:1px solid var(--line)}
+.b-boss{background:var(--signal-wash);color:var(--signal)}
+.it-b{margin-top:8px;font-size:.9375rem;color:var(--ink-muted);line-height:1.85;max-width:62ch}
 .it-b strong{color:var(--ink);font-weight:600}
 
 /* code block */
@@ -109,34 +101,34 @@ a.pre:hover{background:#E1EAFF}
 .copy:hover{background:rgba(255,255,255,.15);color:#FFF}
 .copy.ok{color:#3FC7B4;border-color:#3FC7B4}
 
-.note{margin-top:11px;font-size:.875rem;line-height:1.8;color:var(--muted);
-  border-left:2px solid var(--line-2);padding-left:12px}
+.note{margin-top:11px;font-size:.875rem;line-height:1.8;color:var(--ink-muted);
+  border-left:2px solid var(--line-strong);padding-left:12px}
 .note.warn{border-color:var(--warn);color:var(--ink)}
 .note b{color:var(--ink);font-weight:600}
 
 /* verify table */
 .verify{margin-top:16px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .verify table{width:100%;border-collapse:collapse;font-size:.875rem}
-.verify th{background:var(--soft);text-align:left;padding:10px 14px;
+.verify th{background:var(--surface);text-align:left;padding:10px 14px;
   font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.12em;
-  color:var(--faint);font-weight:500;border-bottom:1px solid var(--line)}
-.verify td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
+  color:var(--ink-faint);font-weight:500;border-bottom:1px solid var(--line)}
+.verify td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--ink-muted);vertical-align:top}
 .verify tr:last-child td{border-bottom:0}
 .verify code{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.8125rem;color:var(--ink)}
-.verify .want{color:var(--ok)}
+.verify .want{color:var(--signal)}
 .vscroll{overflow-x:auto}
 
 /* boss box */
-.boss{margin:30px 0 0;border:1px solid var(--ok);border-radius:3px;background:var(--ok-wash);padding:24px 26px}
-.boss .eyebrow{color:var(--ok)}
+.boss{margin:30px 0 0;border:1px solid var(--signal);border-radius:3px;background:var(--signal-wash);padding:24px 26px}
+.boss .eyebrow{color:var(--signal)}
 .boss h2{margin-top:11px;font-size:1.125rem;font-weight:700;letter-spacing:-.02em}
-.boss p{margin-top:10px;font-size:.9375rem;color:var(--muted);line-height:1.85;max-width:60ch}
+.boss p{margin-top:10px;font-size:.9375rem;color:var(--ink-muted);line-height:1.85;max-width:60ch}
 .boss ol{margin-top:14px;counter-reset:b;display:grid;gap:11px}
 .boss li{counter-increment:b;position:relative;padding-left:26px;font-size:.9375rem;line-height:1.8}
 .boss li::before{content:counter(b);position:absolute;left:0;top:.28em;
-  font-family:"IBM Plex Mono",Menlo,monospace;font-size:.6875rem;color:var(--ok)}
+  font-family:"IBM Plex Mono",Menlo,monospace;font-size:.6875rem;color:var(--signal)}
 
-.foot{padding:28px 0 44px;font-size:.8125rem;color:var(--faint);
+.foot{padding:28px 0 44px;font-size:.8125rem;color:var(--ink-faint);
   display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 @media (max-width:640px){
   .phase-h,.item{grid-template-columns:34px 1fr;gap:12px}
@@ -145,7 +137,7 @@ a.pre:hover{background:#E1EAFF}
 }
 @media print{
   @page{size:A4;margin:12mm}
-  :root{--bg:#FFF;--card:#FFF;--ink:#0B1020;--muted:#40495B;--code-bg:#F2F4F9;--code-ink:#0B1020}
+  :root{--bg:#FFF;--card:#FFF;--ink:#0B1020;--ink-muted:#40495B;--code-bg:#F2F4F9;--code-ink:#0B1020}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .copy,.prog button{display:none}
   .phase,.item,.boss{break-inside:avoid}
@@ -154,16 +146,17 @@ a.pre:hover{background:#E1EAFF}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
-<header class="mast"><div class="wrap">
-  <svg class="wm" viewBox="0 0 1000 150" role="img" aria-label="ONNIT">
-    <text x="0" y="146" textLength="1000" lengthAdjust="spacingAndGlyphs"
-      font-family="IBM Plex Sans KR, sans-serif" font-weight="700" font-size="196"
-      letter-spacing="-6" fill="#1A5CFF">ONNIT</text>
-  </svg>
-  <div class="mast-rule">
-    <span>합류 준비물 · macOS</span>
-    <span>ON · IT · I'M ON IT</span>
-  </div>
+<header class="mast"><div class="wrap mast-in">
+  <a class="brand" href="index.html" aria-label="ONNIT 홈">
+    <svg class="wm" viewBox="0 30 374 97" role="img" aria-label="ONNIT">
+    <g fill="none" stroke="currentColor" stroke-width="17" stroke-linecap="round">
+    <path d="M22.09 49.19 A 39.5 39.5 0 1 0 73.91 49.19"/>
+    <path d="M48 38.5 V 72.5"/>
+    </g>
+    <path fill="currentColor" d="M129.84 77.04 121.20 59.64H120.84V120.00H105.84V36.24H123.24L148.44 79.20L157.08 96.60H157.44V36.24H172.44V120.00H155.04ZM212.12 77.04 203.48 59.64H203.12V120.00H188.12V36.24H205.52L230.72 79.20L239.36 96.60H239.72V36.24H254.72V120.00H237.32ZM266.92 120.00V107.28H277.96V48.96H266.92V36.24H304.96V48.96H293.80V107.28H304.96V120.00ZM350.04 50.28V120.00H334.20V50.28H310.44V36.24H373.80V50.28Z"/>
+    </svg>
+  </a>
+  <span class="mast-tag">합류 준비물 · macOS</span>
 </div></header>
 
 <div class="wrap">

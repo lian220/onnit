@@ -1,25 +1,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>서버라는 게 뭐냐면</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@800&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
 <style>
-:root{
-  color-scheme:light;
-  --bg:#FFFFFF; --card:#FFFFFF; --soft:#F5F7FB; --ink:#0B1020; --muted:#59637A; --faint:#8A93A6;
-  --line:#DFE4EE; --line-2:#C4CCDC; --accent:#1A5CFF; --accent-wash:#EBF1FF; --on:#FFFFFF;
-  --ok:#0E9384; --ok-wash:#E4F4F2; --warn:#9A5B08; --warn-wash:#FCF1E1;
-  --no:#B3524F; --no-wash:#FBEDEC;
-  --code-bg:#0E1424; --code-ink:#DDE4F2;
-}
-:root[data-theme="dark"]{
-  --bg:#080C14; --card:#101623; --soft:#0D131F; --ink:#ECEFF6; --muted:#96A0B6; --faint:#69738C;
-  --line:#1C2434; --line-2:#2B3549; --accent:#7099FF; --accent-wash:#141F3D; --on:#070C16;
-  --ok:#3FC7B4; --ok-wash:#0E2A28; --warn:#E0A661; --warn-wash:#2A1D0C;
-  --no:#E08A86; --no-wash:#2C1615;
-  --code-bg:#060A12; --code-ink:#C9D3E6;
-}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);
   font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
@@ -32,24 +19,27 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
 .eyebrow{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.6875rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--faint);font-weight:500}
+  text-transform:uppercase;color:var(--ink-faint);font-weight:500}
 .wrap{max-width:800px;margin:0 auto;padding:0 26px}
 
-.mast{border-bottom:1px solid var(--line);padding-top:22px}
-.wm{display:block;width:100%;height:auto;overflow:visible}
-.mast-rule{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+/* 헤더는 index.html 과 같은 얼굴이다 — 로고 한 줄, 오른쪽에 이 문서가 무엇인지. */
+.mast{border-bottom:1px solid var(--line)}
+.mast-in{display:flex;align-items:center;flex-wrap:wrap;gap:14px;min-height:52px}
+.brand{display:flex;align-items:center;flex:none;color:var(--accent)}
+.wm{display:block;height:26px;width:auto;overflow:visible;color:var(--accent)}
+.mast-tag{margin-left:auto;
   font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.13em;
-  color:var(--accent);padding:12px 0 18px}
+  color:var(--accent)}
 .head{padding:44px 0 36px;border-bottom:1px solid var(--line)}
 h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.26}
 h1 .s{font-family:"Nanum Myeongjo",serif;font-weight:800;color:var(--accent)}
-.lede{margin-top:17px;color:var(--muted);line-height:1.95}
+.lede{margin-top:17px;color:var(--ink-muted);line-height:1.95}
 .lede b{color:var(--ink);font-weight:600}
 
 .sec{padding:44px 0;border-bottom:1px solid var(--line)}
 .sec > .eyebrow{display:block;margin-bottom:11px}
 h2{font-size:1.375rem;font-weight:700;letter-spacing:-.025em;line-height:1.45}
-.sec p{margin-top:15px;color:var(--muted);line-height:1.95}
+.sec p{margin-top:15px;color:var(--ink-muted);line-height:1.95}
 .sec p b,.sec li b{color:var(--ink);font-weight:600}
 .sec p + p{margin-top:14px}
 
@@ -60,16 +50,16 @@ h2{font-size:1.375rem;font-weight:700;letter-spacing:-.025em;line-height:1.45}
 .vs h3{font-size:.9375rem;font-weight:600;display:flex;align-items:center;gap:8px}
 .vs h3 .tag{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.5625rem;letter-spacing:.12em;
   padding:2px 7px;border-radius:2px;font-weight:500}
-.vs .yes .tag{background:var(--ok-wash);color:var(--ok)}
-.vs .nope .tag{background:var(--no-wash);color:var(--no)}
+.vs .yes .tag{background:var(--signal-wash);color:var(--signal)}
+.vs .nope .tag{background:var(--danger-wash);color:var(--danger)}
 .vs p{margin-top:10px;font-size:.9375rem;line-height:1.85}
 @media (max-width:620px){.vs{grid-template-columns:1fr}}
 
 /* 그림 */
 figure{margin-top:26px}
 figure svg{display:block;width:100%;height:auto;max-width:100%}
-figcaption{margin-top:12px;font-size:.8125rem;color:var(--faint);line-height:1.8;text-align:center}
-.figbox{border:1px solid var(--line);border-radius:4px;background:var(--soft);
+figcaption{margin-top:12px;font-size:.8125rem;color:var(--ink-faint);line-height:1.8;text-align:center}
+.figbox{border:1px solid var(--line);border-radius:4px;background:var(--surface);
   padding:24px 18px 18px;overflow-x:auto}
 
 /* 코드 */
@@ -82,36 +72,36 @@ figcaption{margin-top:12px;font-size:.8125rem;color:var(--faint);line-height:1.8
 
 /* 콜아웃 */
 .note{margin-top:18px;border-left:2px solid var(--accent);padding:2px 0 2px 15px;
-  font-size:.9375rem;line-height:1.9;color:var(--muted)}
+  font-size:.9375rem;line-height:1.9;color:var(--ink-muted)}
 .note.warn{border-color:var(--warn)}
-.note.no{border-color:var(--no)}
+.note.no{border-color:var(--danger)}
 .note b{color:var(--ink);font-weight:600}
 
 /* 표 */
 .tbl{margin-top:20px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .tscroll{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:.875rem}
-th{background:var(--soft);text-align:left;padding:11px 14px;font-weight:500;
+th{background:var(--surface);text-align:left;padding:11px 14px;font-weight:500;
   font-family:"IBM Plex Mono",Menlo,monospace;font-size:.625rem;letter-spacing:.12em;
-  color:var(--faint);border-bottom:1px solid var(--line);white-space:nowrap}
-td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top;
+  color:var(--ink-faint);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--ink-muted);vertical-align:top;
   line-height:1.75}
 tr:last-child td{border-bottom:0}
 td b{color:var(--ink);font-weight:600}
 td code,p code,li code{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.8125rem;
-  background:var(--soft);padding:1px 6px;border-radius:2px;color:var(--ink)}
+  background:var(--surface);padding:1px 6px;border-radius:2px;color:var(--ink)}
 
 /* 목록 */
 .list{margin-top:16px;display:grid;gap:11px}
-.list li{position:relative;padding-left:18px;color:var(--muted);line-height:1.9}
+.list li{position:relative;padding-left:18px;color:var(--ink-muted);line-height:1.9}
 .list li::before{content:"";position:absolute;left:0;top:.78em;width:7px;height:7px;
   border-radius:1px;background:var(--accent)}
 
-.foot{padding:30px 0 46px;font-size:.8125rem;color:var(--faint);
+.foot{padding:30px 0 46px;font-size:.8125rem;color:var(--ink-faint);
   display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 @media print{
   @page{size:A4;margin:12mm}
-  :root{--bg:#FFF;--card:#FFF;--soft:#F4F6FA;--code-bg:#F2F4F9;--code-ink:#0B1020;--muted:#40495B}
+  :root{--bg:#FFF;--card:#FFF;--surface:#F4F6FA;--code-bg:#F2F4F9;--code-ink:#0B1020;--ink-muted:#40495B}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .sec,figure,.vs,.tbl{break-inside:avoid}
   body{font-size:10.5pt}
@@ -119,16 +109,17 @@ td code,p code,li code{font-family:"IBM Plex Mono",Menlo,monospace;font-size:.81
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
-<header class="mast"><div class="wrap">
-  <svg class="wm" viewBox="0 0 1000 150" role="img" aria-label="ONNIT">
-    <text x="0" y="146" textLength="1000" lengthAdjust="spacingAndGlyphs"
-      font-family="IBM Plex Sans KR, sans-serif" font-weight="700" font-size="196"
-      letter-spacing="-6" fill="#1A5CFF">ONNIT</text>
-  </svg>
-  <div class="mast-rule">
-    <span>개발 기초 · 서버와 배포</span>
-    <span>ON · IT · I'M ON IT</span>
-  </div>
+<header class="mast"><div class="wrap mast-in">
+  <a class="brand" href="index.html" aria-label="ONNIT 홈">
+    <svg class="wm" viewBox="0 30 374 97" role="img" aria-label="ONNIT">
+    <g fill="none" stroke="currentColor" stroke-width="17" stroke-linecap="round">
+    <path d="M22.09 49.19 A 39.5 39.5 0 1 0 73.91 49.19"/>
+    <path d="M48 38.5 V 72.5"/>
+    </g>
+    <path fill="currentColor" d="M129.84 77.04 121.20 59.64H120.84V120.00H105.84V36.24H123.24L148.44 79.20L157.08 96.60H157.44V36.24H172.44V120.00H155.04ZM212.12 77.04 203.48 59.64H203.12V120.00H188.12V36.24H205.52L230.72 79.20L239.36 96.60H239.72V36.24H254.72V120.00H237.32ZM266.92 120.00V107.28H277.96V48.96H266.92V36.24H304.96V48.96H293.80V107.28H304.96V120.00ZM350.04 50.28V120.00H334.20V50.28H310.44V36.24H373.80V50.28Z"/>
+    </svg>
+  </a>
+  <span class="mast-tag">개발 기초 · 서버와 배포</span>
 </div></header>
 
 <div class="wrap">
