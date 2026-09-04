@@ -78,10 +78,6 @@
 
 ## 문서
 
-- [ ] **`onboarding.html` 모바일 깨짐** — viewport 메타가 없어 휴대폰에서 980px 화면을
-  축소해 보여주고, `.item` 그리드가 390px 화면에서 929px 로 넘친다.
-  `.phase-h>*,.item>*{min-width:0}` 한 줄이면 넘침은 잡힌다.
-  홈페이지만 고치기로 해서 이번에는 건드리지 않았다.
 - [ ] **`basics.html`·`onboarding.html` 메타** — doctype, `lang="ko"`, description,
   OG 태그가 없다. 링크를 공유하면 미리보기가 안 뜬다. 위와 같은 이유로 미뤘다.
   파비콘은 2026-09-04 헤더 정리 때 넣었다.
@@ -115,6 +111,14 @@
 - [x] **로고** — O 를 전원 기호로 대체. 지름 96 · 획 17 · NNIT SemiBold 600 · 틈 82°.
       `logo.svg` · `mark.svg` · `favicon.svg` · `og.png`.
       글자는 fonttools 로 패스화해 폰트 의존을 없앴다. 파비콘은 별도 판으로 그렸다
+- [x] **`onboarding.html` 모바일 수정** (2026-09-04) — viewport 메타가 없어 휴대폰에서
+      980px 를 축소해 보여주던 것과, 390px 에서 930px 로 넘치던 것을 함께 잡았다.
+      원인은 `.item{grid-template-columns:52px 1fr}` 의 칼럼 기본값 `min-width:auto` 라
+      긴 명령어가 축소를 막고 있었다. `.phase-h>*,.item>*{min-width:0}` 으로 낮추니
+      930 → 393px. 남은 3px 은 `.mono` 안의 공백 없는 긴 경로였고
+      `overflow-wrap:anywhere` 로 마무리했다.
+      **390px·320px 모두 넘침 0건**, 코드 블록 10개는 각자 가로 스크롤로 갇혔다.
+      `basics.html` 은 표가 이미 스크롤 컨테이너 안이라 손댈 게 없었다
 - [x] **색 토큰을 한 벌로** (2026-09-04) — 세 파일에 3벌로 흩어져 있던 색 정의를
       `docs/css/tokens.css` 한 장으로 모았다. 빌드는 없고 `<link>` 한 줄로 문다.
       이름 체계도 통일했다 — 문서 두 장이 쓰던 `--soft`·`--muted`·`--ok`·`--on` 을
