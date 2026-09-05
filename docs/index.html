@@ -1107,7 +1107,7 @@ h1{
         <div><dt>설립</dt><dd><span class="ph">시안</span>2026년</dd></div>
         <div><dt>사업자등록번호</dt><dd><span class="ph">시안</span>000-00-00000</dd></div>
         <div><dt>주소</dt><dd><span class="ph">시안</span>서울특별시</dd></div>
-        <div><dt>이메일</dt><dd><span class="ph">시안</span>contact@onnit.co.kr</dd></div>
+        <div><dt>이메일</dt><dd>lnk@onnit.co.kr</dd></div>
         <div><dt>전화</dt><dd><span class="ph">시안</span>00-0000-0000</dd></div>
       </dl>
     </div>
@@ -1201,7 +1201,7 @@ h1{
 
         <div class="form-foot">
           <button class="btn btn-primary" id="copyBtn" type="button">문의 내용 복사하기</button>
-          <a class="btn btn-ghost" id="mailBtn" href="mailto:contact@onnit.co.kr">메일로 열기</a>
+          <a class="btn btn-ghost" id="mailBtn" href="mailto:lnk@onnit.co.kr">메일로 열기</a>
           <p class="form-hint" id="hint">복사한 뒤 아래 주소로 보내주시면 됩니다.</p>
         </div>
 
@@ -1214,10 +1214,7 @@ h1{
       <div class="aside">
         <div class="aside-block">
           <h3>바로 연락하기</h3>
-          <p class="big-mail"><a href="mailto:contact@onnit.co.kr">contact@onnit.co.kr</a></p>
-          <p style="font-size:.875rem;color:var(--ink-muted);margin-top:8px">
-            <span class="ph">시안</span>연락처는 실제 값으로 교체 예정입니다.
-          </p>
+          <p class="big-mail"><a href="mailto:lnk@onnit.co.kr">lnk@onnit.co.kr</a></p>
         </div>
         <div class="aside-block">
           <h3>이런 내용이 있으면 빠릅니다</h3>
@@ -1355,7 +1352,7 @@ h1{
     preview.value = text;
     if (mailBtn) {
       var subject = 'ONNIT 프로젝트 문의' + (val('f-org') ? ' - ' + val('f-org') : '');
-      mailBtn.href = 'mailto:contact@onnit.co.kr?subject=' +
+      mailBtn.href = 'mailto:lnk@onnit.co.kr?subject=' +
         encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
     }
   }
@@ -1373,7 +1370,7 @@ h1{
       function done(ok){
         if (!hint) return;
         hint.textContent = ok
-          ? '복사했습니다. contact@onnit.co.kr 로 붙여넣어 보내주세요.'
+          ? '복사했습니다. lnk@onnit.co.kr 로 붙여넣어 보내주세요.'
           : '복사가 막혔습니다. 아래 미리보기 내용을 직접 선택해 복사해 주세요.';
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
