@@ -511,12 +511,6 @@ h1{
 }
 .info dt{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.08em;color:var(--ink-faint);padding-top:.25em}
 .info dd{color:var(--ink-muted)}
-.ph{
-  font-family:"IBM Plex Mono",monospace;font-size:.625rem;
-  letter-spacing:.1em;color:var(--ink-faint);
-  border:1px dashed var(--line-strong);border-radius:2px;
-  padding:1px 6px;margin-right:8px;vertical-align:1px;
-}
 @media (max-width:640px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* ============================================================
@@ -600,11 +594,6 @@ h1{
   padding:18px 0 30px;
   display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   font-size:.8125rem;color:var(--ink-faint);
-}
-.draft{
-  border:1px dashed var(--line-strong);border-radius:3px;
-  padding:14px 16px;margin:26px 0 0;
-  font-size:.8125rem;color:var(--ink-faint);line-height:1.75;
 }
 @media (max-width:640px){.foot-in{grid-template-columns:1fr;gap:24px}}
 
@@ -938,6 +927,33 @@ h1{
 
         <article class="pcard">
           <div class="chiprow">
+            <span class="chip chip-live">공개 중</span>
+            <span class="chip">B2C</span>
+            <span class="chip">자체 데모</span>
+          </div>
+          <h3 class="pj-title">모바일 청첩장<span class="url">wedding.onnit.co.kr</span></h3>
+          <p class="pj-lead">
+            상용 서비스 다섯 곳을 분석한 뒤 따라 만들지 않고 다르게 푼 곳을 찾아 구현했습니다.
+            다섯 곳 모두 첫 화면이 랜딩이었는데, 청첩장을 <strong>보는 사람과 만드는 사람이
+            다르기 때문</strong>이었습니다. 그래서 랜딩 · 청첩장 · 제작 도구를 셋으로 갈랐습니다.
+            기능 개수로는 이길 수 없어 하객 입장에서 아쉬운 지점만 골랐습니다 —
+            받는 사람 이름이 뜨는 맞춤 인사, 부모님 세대를 위한 큰 글씨 모드,
+            예식 당일 자동으로 뜨는 길찾기 배너.
+            랜딩에는 지어낸 실적 대신 <strong>못 하는 것 세 가지</strong>를 적었습니다.
+            데이터는 서버 없이 주소에 실어 보냅니다.
+          </p>
+          <div class="stackline">
+            <span>단일 HTML</span><span>빌드 없음</span><span>base64url 주소 저장</span><span>CSS 토큰 분리</span><span>GitHub Pages</span>
+          </div>
+          <p class="pj-lead" style="margin-top:14px">
+            <a href="https://wedding.onnit.co.kr/" target="_blank" rel="noopener">열어보기 &rarr;</a>
+            &nbsp;·&nbsp;
+            <a href="https://wedding.onnit.co.kr/make.html" target="_blank" rel="noopener">제작 페이지 &rarr;</a>
+          </p>
+        </article>
+
+        <article class="pcard">
+          <div class="chiprow">
             <span class="chip chip-live">운영 중</span>
             <span class="chip">의료 · B2B</span>
           </div>
@@ -1104,11 +1120,8 @@ h1{
         <div><dt>회사명</dt><dd>ONNIT (온잇 · 오닛)</dd></div>
         <div><dt>대표</dt><dd>임도영</dd></div>
         <div><dt>사업 영역</dt><dd>IT 컨설팅 · SI 구축 · 수탁 개발 · AI 솔루션 · 운영 유지보수</dd></div>
-        <div><dt>설립</dt><dd><span class="ph">시안</span>2026년</dd></div>
-        <div><dt>사업자등록번호</dt><dd><span class="ph">시안</span>000-00-00000</dd></div>
-        <div><dt>주소</dt><dd><span class="ph">시안</span>서울특별시</dd></div>
-        <div><dt>이메일</dt><dd>lnk@onnit.co.kr</dd></div>
-        <div><dt>전화</dt><dd><span class="ph">시안</span>00-0000-0000</dd></div>
+        <div><dt>설립</dt><dd>2026년</dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:lnk@onnit.co.kr">lnk@onnit.co.kr</a></dd></div>
       </dl>
     </div>
   </div>
@@ -1268,11 +1281,6 @@ h1{
           <li><a href="#contact">프로젝트 문의</a></li>
         </ul>
       </div>
-    </div>
-    <div class="draft">
-      이 페이지는 시안입니다. <span class="ph">시안</span> 표시가 붙은 항목은 임시 값이며,
-      사업자 정보와 연락처는 확정된 값으로 교체해야 합니다.
-      구축 사례와 기술 스택은 실제 프로젝트 내용입니다.
     </div>
     <div class="foot-bar">
       <span>© 2026 ONNIT. All rights reserved.</span>
