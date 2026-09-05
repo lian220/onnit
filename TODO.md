@@ -17,12 +17,12 @@
   실제 값이 나오면 `.info` 목록에 다시 넣는다.
   지금 회사 정보에 남은 것: 회사명 · 대표 · 사업 영역 · 설립(2026년 9월 7일) · 이메일.
   시안 마커가 0개가 되어 꼬리말 안내와 `.ph` · `.draft` CSS 도 함께 제거했다.
-- [ ] **`lnk@onnit.co.kr` 메일 수신 설정** — 주소는 2026-09-05 에 확정했고 사이트에도
-  반영했다. 다만 **`onnit.co.kr` 에 MX 레코드가 없어서 지금 이 주소로 보낸 메일은 사라진다.**
-  사이트 문의 경로가 전부 이 주소를 가리키므로 이게 먼저다.
-  대시보드 → Email → Email Routing 에서 `lnk` 를 만들고 대표 지메일로 포워딩하면 되고,
-  MX·SPF 레코드는 Cloudflare 가 자동으로 넣는다. 메일함을 따로 살 필요가 없다.
-  설정 후 `dig +short MX onnit.co.kr` 로 확인하면 된다.
+- [ ] **지메일에서 `lnk@` 로 답장하기** — 수신은 2026-09-05 에 끝났다(아래 참고).
+  다만 Email Routing 은 **받기 전용**이라, 지금 지메일에서 답장하면 보내는 사람이
+  `lian.dy220@gmail.com` 으로 나간다. 문의를 받아놓고 개인 지메일로 답하는 모양이 된다.
+  지메일 → 설정 → 계정 → **"다른 주소에서 메일 보내기"** 에 `lnk@onnit.co.kr` 을 추가한다.
+  확인 메일은 Email Routing 이 지메일로 넘겨주므로 인증이 어렵지 않다.
+  이건 Cloudflare 가 아니라 지메일 쪽 설정이고 무료다.
 - [ ] **`www` HTTPS 인증서** — CNAME 은 2026-09-05 에 넣었고 `http://www` 는 apex 로
   301 을 정상적으로 보낸다. 다만 **GitHub 인증서에 `www` 가 안 들어갔다.**
   GitHub 은 인증서를 발급하던 시점에 있던 도메인만 넣는데, `www` 를 그 뒤에 추가했다.
@@ -123,6 +123,16 @@
 - [x] **로고** — O 를 전원 기호로 대체. 지름 96 · 획 17 · NNIT SemiBold 600 · 틈 82°.
       `logo.svg` · `mark.svg` · `favicon.svg` · `og.png`.
       글자는 fonttools 로 패스화해 폰트 의존을 없앴다. 파비콘은 별도 판으로 그렸다
+- [x] **`lnk@onnit.co.kr` 메일 수신** (2026-09-05) — Cloudflare Email Routing 으로 붙였다.
+      메일함을 산 게 아니라 대표 지메일로 **전달**하는 것이고, 인증된 목적지로 가는
+      전달은 모든 플랜에서 무료다.
+      - 목적지 `lian.dy220@gmail.com` 등록 — 계정 소유 주소라 즉시 인증됐다
+      - `wrangler email routing enable onnit.co.kr` → MX 3개(`route1~3.mx.cloudflare.net`)와
+        SPF(`v=spf1 include:_spf.mx.cloudflare.net ~all`) 가 자동으로 들어갔다
+      - 규칙 `lnk` : `to:lnk@onnit.co.kr` → `forward:lian.dy220@gmail.com`
+      - **Catch-all 은 꺼져 있고 동작은 drop** 이다. 즉 `lnk@` 외의 주소
+        (`contact@`, `info@` 등)로 온 메일은 전달되지 않고 버려진다. 필요하면 그때 켠다
+      - A/AAAA 는 그대로라 사이트는 영향 없다 (확인함, 200)
 - [x] **`onboarding.html` 모바일 수정** (2026-09-04) — viewport 메타가 없어 휴대폰에서
       980px 를 축소해 보여주던 것과, 390px 에서 930px 로 넘치던 것을 함께 잡았다.
       원인은 `.item{grid-template-columns:52px 1fr}` 의 칼럼 기본값 `min-width:auto` 라
