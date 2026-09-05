@@ -5,3 +5,7 @@ node_modules/
 
 # 작업 중 생기는 스크린샷
 /pc-top.png
+
+# 작업용 스크린샷
+*.png
+!docs/og.png
