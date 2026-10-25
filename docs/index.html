@@ -510,7 +510,8 @@ h1{
   padding:13px 0;border-bottom:1px solid var(--line);font-size:.9375rem;
 }
 .info dt{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.08em;color:var(--ink-faint);padding-top:.25em}
-.info dd{color:var(--ink-muted)}
+.info dd{color:var(--ink-muted);overflow-wrap:anywhere}
+.business-info{font-size:.8rem;line-height:1.9;margin-bottom:24px;overflow-wrap:anywhere}
 @media (max-width:640px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* ============================================================
@@ -1117,11 +1118,15 @@ h1{
       </p>
 
       <dl class="info">
-        <div><dt>회사명</dt><dd>ONNIT (온잇 · 오닛)</dd></div>
+        <div><dt>브랜드</dt><dd>ONNIT (온잇 · 오닛)</dd></div>
+        <div><dt>운영 상호</dt><dd>엘유니버스컴퍼니</dd></div>
+        <div><dt>사업자등록번호</dt><dd>585-13-03172 (일반과세자)</dd></div>
+        <div><dt>사업장 주소</dt><dd>서울특별시 송파구 충민로 188</dd></div>
+        <div><dt>연락처</dt><dd>010-8498-1312</dd></div>
         <div><dt>대표</dt><dd>임도영</dd></div>
         <div><dt>사업 영역</dt><dd>IT 컨설팅 · SI 구축 · 수탁 개발 · AI 솔루션 · 운영 유지보수</dd></div>
         <div><dt>설립</dt><dd>2026년 9월 7일</dd></div>
-        <div><dt>이메일</dt><dd><a href="mailto:lnk@onnit.co.kr">lnk@onnit.co.kr</a></dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:luniverseco.admin@gmail.com">luniverseco.admin@gmail.com</a></dd></div>
       </dl>
     </div>
   </div>
@@ -1214,7 +1219,7 @@ h1{
 
         <div class="form-foot">
           <button class="btn btn-primary" id="copyBtn" type="button">문의 내용 복사하기</button>
-          <a class="btn btn-ghost" id="mailBtn" href="mailto:lnk@onnit.co.kr">메일로 열기</a>
+          <a class="btn btn-ghost" id="mailBtn" href="mailto:luniverseco.admin@gmail.com">메일로 열기</a>
           <p class="form-hint" id="hint">복사한 뒤 아래 주소로 보내주시면 됩니다.</p>
         </div>
 
@@ -1227,7 +1232,7 @@ h1{
       <div class="aside">
         <div class="aside-block">
           <h3>바로 연락하기</h3>
-          <p class="big-mail"><a href="mailto:lnk@onnit.co.kr">lnk@onnit.co.kr</a></p>
+          <p class="big-mail"><a href="mailto:luniverseco.admin@gmail.com">luniverseco.admin@gmail.com</a></p>
         </div>
         <div class="aside-block">
           <h3>이런 내용이 있으면 빠릅니다</h3>
@@ -1256,6 +1261,7 @@ h1{
 
 <footer class="foot">
   <div class="wrap">
+    <p class="business-info">운영: <a href="https://luniverseco.com/">엘유니버스컴퍼니</a> · 대표자: 임도영 · 사업자등록번호: 585-13-03172 (일반과세자)<br>사업장 주소: 서울특별시 송파구 충민로 188 · 전화: 010-8498-1312 · 이메일: <a href="mailto:luniverseco.admin@gmail.com">luniverseco.admin@gmail.com</a></p>
     <div class="foot-in">
       <div>
         <a class="brand" href="#top" style="margin-bottom:12px">
@@ -1360,7 +1366,7 @@ h1{
     preview.value = text;
     if (mailBtn) {
       var subject = 'ONNIT 프로젝트 문의' + (val('f-org') ? ' - ' + val('f-org') : '');
-      mailBtn.href = 'mailto:lnk@onnit.co.kr?subject=' +
+      mailBtn.href = 'mailto:luniverseco.admin@gmail.com?subject=' +
         encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
     }
   }
@@ -1378,7 +1384,7 @@ h1{
       function done(ok){
         if (!hint) return;
         hint.textContent = ok
-          ? '복사했습니다. lnk@onnit.co.kr 로 붙여넣어 보내주세요.'
+          ? '복사했습니다. luniverseco.admin@gmail.com 로 붙여넣어 보내주세요.'
           : '복사가 막혔습니다. 아래 미리보기 내용을 직접 선택해 복사해 주세요.';
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
